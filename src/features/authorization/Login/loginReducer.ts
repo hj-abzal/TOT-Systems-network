@@ -24,6 +24,12 @@ export const loginReducer = (
         ...state,
         validation: action.validation,
       }
+    case loginReducerActions.LOG_OUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        loggedId: 0,
+      }
     default:
       return state
   }
@@ -34,10 +40,13 @@ export const loginReducer = (
 const loginReducerActions = {
   SET_IS_LOGGED_IN: 'login/SET_IS_LOGGED_IN',
   SET_LOGIN_VALIDATION: 'login/SET_LOGIN_VALIDATION',
+  LOG_OUT: 'login/LOG_OUT',
 } as const
 
 export const setIsLoggedIn = (id: number, value: boolean) =>
   ({ type: loginReducerActions.SET_IS_LOGGED_IN, id, value } as const)
+
+export const logOut = () => ({ type: loginReducerActions.LOG_OUT } as const)
 
 export const setValidation = (validation: string) =>
   ({ type: loginReducerActions.SET_LOGIN_VALIDATION, validation } as const)
@@ -63,3 +72,4 @@ type InitialStateType = typeof initialState
 export type LoginReducerActionTypes =
   | ReturnType<typeof setIsLoggedIn>
   | ReturnType<typeof setValidation>
+  | ReturnType<typeof logOut>
