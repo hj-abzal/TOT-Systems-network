@@ -1,16 +1,16 @@
 import { registReducer, RegistReducerActionTypes } from './../features/authorization/Registration/registReducer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import thunkMiddlewere, { ThunkAction } from 'redux-thunk'
+import { ThunkAction } from 'redux-thunk'
 import thunk from 'redux-thunk'
 
 import { loadState, saveState } from '../utils/localStorage'
 import { loginReducer } from '../features/authorization/Login/loginReducer';
-import { profileReducer } from '../features/Profile/profileReducer';
+import { profilePageReducer } from '../features/ProfilePage/profilePageReducer';
 
 let rootReducer = combineReducers({
   login: loginReducer,
   registration: registReducer,
-  profile: profileReducer,
+  profile: profilePageReducer,
 })
 
 

@@ -15,11 +15,9 @@ const mappedRoutes = pages.map((p: PageType) => (
 const Routes = () => {
 
     return (
-        <Container fixed>
             <Switch>
                 {mappedRoutes}
             </Switch>
-        </Container>
     );
 };
 

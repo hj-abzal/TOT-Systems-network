@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux'
 import {
   addUserProfile,
-  ProfileReducerActionTypes,
-} from '../../Profile/profileReducer'
+  ProfilePageReducerActionTypes,
+} from '../../ProfilePage/profilePageReducer'
 
 const initialState = {
   registeredUsers: [] as RegisteredUserType[],
@@ -39,7 +39,7 @@ export const addRegisteredUser = (payload: RegisteredUserType) => {
 export const addUser =
   (firstName: string, lastName: string, email: string, password: string) =>
   (
-    dispatch: Dispatch<RegistReducerActionTypes | ProfileReducerActionTypes>
+    dispatch: Dispatch<RegistReducerActionTypes | ProfilePageReducerActionTypes>
   ) => {
     let id = Date.now()
     dispatch(addRegisteredUser({ id, firstName, lastName, email, password }))

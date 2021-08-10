@@ -49,7 +49,7 @@ export const Login = () => {
     })
 
     if (isLoggedIn) {
-        return <Redirect to={PATH.PROFILE} />
+        return <Redirect to={PATH.MAIN} />
     }
     return <Grid container justify="center">
         <ErrorSnackbar />

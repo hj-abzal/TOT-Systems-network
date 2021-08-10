@@ -4,9 +4,9 @@ import { RegisteredUserType } from '../authorization/Registration/registReducer'
 const initialState = {}
   
 
-export const profileReducer = (
+export const profilePageReducer = (
   state: InitialStateType = initialState,
-  action: ProfileReducerActionTypes
+  action: ProfilePageReducerActionTypes
 ): InitialStateType => {
   switch (action.type) {
     case registReducerActions.ADD_USER_PROFILE:
@@ -45,16 +45,16 @@ export const addUserProfile = (payload: RegisteredUserType) => {
 // types
 type InitialStateType = typeof initialState
 
-export type ProfileReducerActionTypes = ReturnType<typeof addUserProfile>
+export type ProfilePageReducerActionTypes = ReturnType<typeof addUserProfile>
 
 export type UsersProfileType = {
   [key: number]: ProfileType
 }
 export type ProfileType = {
   profileInfo: RegisteredUserType
-  myPosts: PostType[]
+  myPosts: MyNotesType[]
 }
-export type PostType = {
+export type MyNotesType = {
   id: string
   title: string
   text: string
