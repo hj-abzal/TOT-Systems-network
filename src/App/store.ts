@@ -5,10 +5,12 @@ import thunk from 'redux-thunk'
 
 import { loadState, saveState } from '../utils/localStorage'
 import { loginReducer } from '../features/authorization/Login/loginReducer';
+import { profileReducer } from '../features/Profile/profileReducer';
 
 let rootReducer = combineReducers({
   login: loginReducer,
   registration: registReducer,
+  profile: profileReducer,
 })
 
 
@@ -43,6 +45,7 @@ export const store = createStore(
 store.subscribe(() => {
   saveState({
     login: store.getState().login,
-    registration: store.getState().registration
+    registration: store.getState().registration,
+    profile: store.getState().profile
   })
 })

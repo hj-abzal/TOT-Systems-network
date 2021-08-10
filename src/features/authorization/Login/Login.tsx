@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { LogIn } from './loginReducer';
+import { PATH } from '../../../components/routes/Pages';
 
 
 export const Login = () => {
@@ -38,14 +39,13 @@ export const Login = () => {
         onSubmit: values => {
             let { email, password } = values;
             formik.resetForm()
-            alert(values)
             dispatch(LogIn(email, password))
         },
     })
 
-    // if (isLoggedIn) {
-    //     return <Redirect to={'/'} />
-    // }
+    if (isLoggedIn) {
+        return <Redirect to={PATH.PROFILE} />
+    }
     return <div>
         <form onSubmit={formik.handleSubmit}>
             <input

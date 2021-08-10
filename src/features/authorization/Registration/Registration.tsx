@@ -3,8 +3,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
-import { addRegisteredUser, RegisteredUserType } from './registReducer';
-import { setValidation } from '../Login/loginReducer';
+import { addUser, RegisteredUserType } from './registReducer';
 
 
 export const Registration = (props: any) => {
@@ -57,7 +56,7 @@ export const Registration = (props: any) => {
             let { firstName, lastName, email, password, } = values;
             formik.resetForm()
             console.log(values);
-            dispatch(addRegisteredUser(firstName, lastName, email, password))
+            dispatch(addUser(firstName, lastName, email, password))
             setEditMode(true)
 
         },

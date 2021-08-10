@@ -22,10 +22,10 @@ const DevHeader = () => {
         dispatch(logOut())
     }
     return (
-        <>
+        <div>
             {mappedLinks}
             {isLoggedIn&& <button onClick={onClickHandler}>Logout</button>}
-        </>
+        </div>
     );
 };
 

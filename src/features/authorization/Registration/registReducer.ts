@@ -25,22 +25,19 @@ const registReducerActions = {
   ADD_REGISTERED_USER: 'reg/ADD_REGISTERED_USER',
 } as const
 
-export const addRegisteredUser = (
-  firstName: string,
-  lastName: string,
-  email: string,
-  password: string
-) => {
-  let payload = {
-    id: Date.now(),
-    firstName,
-    lastName,
-    email,
-    password,
-  }
-  return { type: registReducerActions.ADD_REGISTERED_USER, payload } as const
+export const addRegisteredUser = (payload: RegisteredUserType) => {
+  return {
+    type: registReducerActions.ADD_REGISTERED_USER,
+    payload,
+  } as const
 }
-
+//
+export const addUser =
+  (firstName: string, lastName: string, email: string, password: string) =>
+  (dispatch: Dispatch<RegistReducerActionTypes>) => {
+    let id = Date.now()
+    dispatch(addRegisteredUser({id, firstName, lastName, email, password}))
+  }
 // types
 type InitialStateType = typeof initialState
 
