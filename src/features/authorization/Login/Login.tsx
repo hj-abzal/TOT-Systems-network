@@ -3,22 +3,22 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
+import { LogIn } from './loginReducer';
 
 
 export const Login = () => {
     const isLoggedIn = useSelector<AppStateType, boolean>(state => state.login.isLoggedIn)
+    const loginValidation = useSelector<AppStateType, string>(state => state.login.validation)
     const dispatch = useDispatch();
 
     type FormErrorType = {
         email?: string
         password?: string
-        rememberMe?: boolean
     }
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
-            rememberMe: false
         },
         validate: (values) => {
             const errors: FormErrorType = {};
@@ -36,25 +36,18 @@ export const Login = () => {
             return errors;
         },
         onSubmit: values => {
+            let { email, password } = values;
             formik.resetForm()
             alert(values)
-            // dispatch(loginTC(values))
+            dispatch(LogIn(email, password))
         },
     })
 
-    if (isLoggedIn) {
-        return <Redirect to={'/'} />
-    }
+    // if (isLoggedIn) {
+    //     return <Redirect to={'/'} />
+    // }
     return <div>
         <form onSubmit={formik.handleSubmit}>
-            <p>To log in get registered
-                <a href={'https://social-network.samuraijs.com/'}
-                    target={'_blank'}>here
-                </a>
-            </p>
-            <p>or use common test account credentials:</p>
-            <p>Email: free@samuraijs.com</p>
-            <p>Password: free</p>
             <input
                 placeholder="Email"
                 {...formik.getFieldProps('email')}
@@ -69,12 +62,13 @@ export const Login = () => {
             />
             {formik.touched.password &&
                 formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
-            <input
-                placeholder={'Remember me'}
-                type="checkbox"
-                {...formik.getFieldProps('remeberMe')}
-            />
+
             <button type={'submit'}>Login</button>
+            {
+                loginValidation && <div style={{ color: 'red' }}>
+                    {loginValidation}
+                </div>
+            }
         </form>
     </div>
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { addRegisteredUser, RegisteredUserType } from './registReducer';
+import { setValidation } from '../Login/loginReducer';
 
 
 export const Registration = (props: any) => {
