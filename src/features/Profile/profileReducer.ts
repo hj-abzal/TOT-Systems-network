@@ -1,9 +1,8 @@
 import { Dispatch } from 'redux'
 import { RegisteredUserType } from '../authorization/Registration/registReducer'
 
-const initialState = {
-    
-}
+const initialState = {}
+  
 
 export const profileReducer = (
   state: InitialStateType = initialState,
@@ -11,15 +10,19 @@ export const profileReducer = (
 ): InitialStateType => {
   switch (action.type) {
     case registReducerActions.ADD_USER_PROFILE:
-        return {
-            ...state,
-            [action.payload.id]: {
-                profileInfo: {...action.payload},
-                myPosts: [{
-                    id: 1, title: "Всем привет!", text: "Это мой первый пост ... //\\^._.^//\\ "
-                }]
-            }
-        }
+      return {
+        ...state,
+        [action.payload.id]: {
+          profileInfo: { ...action.payload },
+          myPosts: [
+            {
+              id: 1,
+              title: 'Всем привет!',
+              text: 'Это мой первый пост ... //\\^._.^//\\ ',
+            },
+          ],
+        },
+      }
     default:
       return state
   }
@@ -32,33 +35,27 @@ const registReducerActions = {
 } as const
 
 export const addUserProfile = (payload: RegisteredUserType) => {
-
   return {
     type: registReducerActions.ADD_USER_PROFILE,
     payload,
   } as const
 }
 
-// export const addUser =
-//   (firstName: string, lastName: string, email: string, password: string) =>
-//   (dispatch: Dispatch<RegistReducerActionTypes>) => {
-//     let id = Date.now()
-//     dispatch(addRegisteredUser({id, firstName, lastName, email, password}))
-//   }
+
 // types
 type InitialStateType = typeof initialState
 
 export type ProfileReducerActionTypes = ReturnType<typeof addUserProfile>
 
 export type UsersProfileType = {
-    [key: number]: ProfileType
+  [key: number]: ProfileType
 }
 export type ProfileType = {
-    profileInfo: RegisteredUserType,
-    myPosts: PostType[]
+  profileInfo: RegisteredUserType
+  myPosts: PostType[]
 }
 export type PostType = {
-    id: string,
-    title: string,
-    text: string
+  id: string
+  title: string
+  text: string
 }
