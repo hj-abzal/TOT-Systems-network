@@ -6,7 +6,7 @@ import { AppStateType } from '../../../App/store';
 
 
 export const Login = () => {
-    const isLoggedIn = useSelector<AppStateType, boolean>(state => state.auth.isLoggedIn)
+    const isLoggedIn = useSelector<AppStateType, boolean>(state => state.login.isLoggedIn)
     const dispatch = useDispatch();
 
     type FormErrorType = {

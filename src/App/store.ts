@@ -1,17 +1,16 @@
+import { registReducer, RegistReducerActionTypes } from './../features/authorization/Registration/registReducer';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunkMiddlewere, { ThunkAction } from 'redux-thunk'
 import thunk from 'redux-thunk'
-import {
-  authReducer,
-  AuthReducerActionTypes,
-} from '../features/authorization/auth-reducer'
+
+import { loadState, saveState } from '../utils/localStorage'
+import { loginReducer } from '../features/authorization/Login/loginReducer';
 
 let rootReducer = combineReducers({
-  auth: authReducer,
+  login: loginReducer,
+  registration: registReducer,
 })
 
-//store type
-// export let store = createStore(rootReducer, applyMiddleware(thunkMiddlewere))
 
 export type StoreType = typeof store
 
@@ -20,7 +19,7 @@ type RootReducerType = typeof rootReducer
 export type AppStateType = ReturnType<RootReducerType>
 export type GetAppStateType = () => AppStateType
 
-export type AppActionsType = AuthReducerActionTypes
+export type AppActionsType = RegistReducerActionTypes
 
 export type AppThunkType<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -37,5 +36,13 @@ declare global {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 export const store = createStore(
   rootReducer,
+  loadState(),
   composeEnhancers(applyMiddleware(thunk))
 )
+
+store.subscribe(() => {
+  saveState({
+    login: store.getState().login,
+    registration: store.getState().registration
+  })
+})
