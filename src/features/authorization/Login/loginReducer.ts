@@ -5,7 +5,7 @@ import { act } from 'react-dom/test-utils'
 const initialState = {
   isLoggedIn: false,
   loggedId: 0,
-  validation: '',
+  validation: '' as string | null,
 }
 
 export const loginReducer = (
@@ -48,7 +48,7 @@ export const setIsLoggedIn = (id: number, value: boolean) =>
 
 export const logOut = () => ({ type: loginReducerActions.LOG_OUT } as const)
 
-export const setValidation = (validation: string) =>
+export const setValidation = (validation: string | null) =>
   ({ type: loginReducerActions.SET_LOGIN_VALIDATION, validation } as const)
 //thunks
 

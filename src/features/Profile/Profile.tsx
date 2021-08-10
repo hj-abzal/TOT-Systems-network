@@ -12,7 +12,7 @@ export const Profile = () => {
         return (
             <div>
                 <div>
-                    <img src="userPng" alt="" />
+                    <img style={{width: "150px"}} src={userPng} alt="" />
                 </div>
                 <div>
                     <b>{user.profileInfo.firstName + ' ' + user.profileInfo.lastName}</b>

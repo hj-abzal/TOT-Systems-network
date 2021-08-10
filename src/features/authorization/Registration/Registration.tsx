@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { addUser, RegisteredUserType } from './registReducer';
-
+import Grid from '@material-ui/core/Grid/Grid';
+import FormControl from '@material-ui/core/FormControl/FormControl';
+import FormGroup from '@material-ui/core/FormGroup/FormGroup';
+import Button from '@material-ui/core/Button/Button';
+import TextField from '@material-ui/core/TextField/TextField';
+import s from './Registration.module.css'
 
 export const Registration = (props: any) => {
     const registeredUsers = useSelector<AppStateType, RegisteredUserType[]>(state => state.registration.registeredUsers)
@@ -65,43 +70,122 @@ export const Registration = (props: any) => {
     if (editMode) {
         return <Redirect to={'/'} />
     }
-    return <div>
-        <form onSubmit={formik.handleSubmit}>
+    return <Grid container justify="center">
+        <Grid item xs={4}>
+            <form onSubmit={formik.handleSubmit}>
+                <FormControl>
+                    <FormGroup>
+                        <TextField
+                            className={s.textField}
+                            label="Имя"
+                            margin="normal"
+                            {...formik.getFieldProps('firstName')}
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.firstName && formik.errors.firstName
+                                }
+                            </div>
+                        }
+                        <TextField
+                            label="Фамилия"
+                            margin="normal"
+                            {...formik.getFieldProps('lastName')}
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.lastName && formik.errors.lastName
+                                }
+                            </div>
+                        }
+                        <TextField
+                            label="Эл.почта"
+                            margin="normal"
+                            {...formik.getFieldProps('email')}
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.email && formik.errors.email
+                                }
+                            </div>
+                        }
+                        <TextField
+                            type="password"
+                            label="пароль"
+                            margin="normal"
+                            {...formik.getFieldProps('password')}
 
-            <input
-                placeholder="Имя"
-                {...formik.getFieldProps('firstName')}
-            />
-            {formik.touched.firstName &&
-                formik.errors.firstName ? <div style={{ color: 'red' }}>{formik.errors.firstName}</div> : null}
-            <input
-                placeholder="Фамилия"
-                {...formik.getFieldProps('lastName')}
-            />
-            {formik.touched.lastName &&
-                formik.errors.lastName ? <div style={{ color: 'red' }}>{formik.errors.lastName}</div> : null}
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.password && formik.errors.password
+                                }
+                            </div>
+                        }
+                        <TextField
+                            type="password"
+                            label="введите ещё раз пароль"
+                            margin="normal"
+                            {...formik.getFieldProps('passwordCheck')}
 
-            <input
-                placeholder="Эл.почта"
-                {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email &&
-                formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
-            <input
-                type="password"
-                placeholder="пароль"
-                {...formik.getFieldProps('password')}
-            />
-            {formik.touched.password &&
-                formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
-            <input
-                type="password"
-                placeholder="введите ещё раз пароль"
-                {...formik.getFieldProps('passwordCheck')}
-            />
-            {formik.touched.passwordCheck &&
-                formik.errors.passwordCheck ? <div style={{ color: 'red' }}>{formik.errors.passwordCheck}</div> : null}
-            <button type={'submit'}>Заригестрироваться</button>
-        </form>
-    </div>
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.passwordCheck && formik.errors.passwordCheck
+                                }
+                            </div>
+                        }
+                        <Button type={'submit'} variant={'contained'} color={'primary'}>зарегистрироваться</Button>
+                    </FormGroup>
+                </FormControl>
+            </form>
+        </Grid>
+    </Grid>
 }
+
+
+
+// <div>
+//         <form onSubmit={formik.handleSubmit}>
+
+//             <input
+//                 placeholder="Имя"
+//                 {...formik.getFieldProps('firstName')}
+//             />
+//             {formik.touched.firstName &&
+//                 formik.errors.firstName ? <div style={{ color: 'red' }}>{formik.errors.firstName}</div> : null}
+//             <input
+//                 placeholder="Фамилия"
+//                 {...formik.getFieldProps('lastName')}
+//             />
+//             {formik.touched.lastName &&
+//                 formik.errors.lastName ? <div style={{ color: 'red' }}>{formik.errors.lastName}</div> : null}
+
+//             <input
+//                 placeholder="Эл.почта"
+//                 {...formik.getFieldProps('email')}
+//             />
+//             {formik.touched.email &&
+//                 formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
+//             <input
+//                 type="password"
+//                 placeholder="пароль"
+//                 {...formik.getFieldProps('password')}
+//             />
+//             {formik.touched.password &&
+//                 formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
+//             <input
+//                 type="password"
+//                 placeholder="введите ещё раз пароль"
+//                 {...formik.getFieldProps('passwordCheck')}
+//             />
+//             {formik.touched.passwordCheck &&
+//                 formik.errors.passwordCheck ? <div style={{ color: 'red' }}>{formik.errors.passwordCheck}</div> : null}
+//             <button type={'submit'}>Заригестрироваться</button>
+//         </form>
+//     </div>

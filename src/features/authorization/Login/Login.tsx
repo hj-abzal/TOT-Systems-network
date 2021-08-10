@@ -1,15 +1,20 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { LogIn } from './loginReducer';
 import { PATH } from '../../../components/routes/Pages';
-
+import s from './Login.module.css'
+import { Grid, Button } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl/FormControl';
+import FormLabel from '@material-ui/core/FormLabel/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup/FormGroup';
+import TextField from '@material-ui/core/TextField/TextField';
+import { ErrorSnackbar } from '../../../components/ErrorSnackbar/ErrorSnackbar';
 
 export const Login = () => {
     const isLoggedIn = useSelector<AppStateType, boolean>(state => state.login.isLoggedIn)
-    const loginValidation = useSelector<AppStateType, string>(state => state.login.validation)
     const dispatch = useDispatch();
 
     type FormErrorType = {
@@ -46,29 +51,74 @@ export const Login = () => {
     if (isLoggedIn) {
         return <Redirect to={PATH.PROFILE} />
     }
-    return <div>
-        <form onSubmit={formik.handleSubmit}>
-            <input
-                placeholder="Email"
-                {...formik.getFieldProps('email')}
-            />
-            {formik.touched.email &&
-                formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
-            <input
-                type="password"
-                placeholder="Password"
-                {...formik.getFieldProps('password')}
+    return <Grid container justify="center">
+        <ErrorSnackbar />
+        <Grid item xs={4}>
+            <form onSubmit={formik.handleSubmit}>
+                <FormControl>
+                    <FormLabel>
+                        <p>Planktonics messanger v1.0 </p>                        
+                        <p>специально для TOT Systems</p>
+                        <p>Чтобы зарегистрироваться нажмите
+                            <NavLink to={PATH.REGISTER}> здесь</NavLink>
+                        </p>
+                    </FormLabel>
+                    <FormGroup>
+                        <TextField
+                            label="Email"
+                            margin="normal"
+                            {...formik.getFieldProps('email')}
+                        />
 
-            />
-            {formik.touched.password &&
-                formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.email && formik.errors.email
+                                }
+                            </div>
+                        }
+                        <TextField
+                            type="password"
+                            label="Password"
+                            margin="normal"
+                            {...formik.getFieldProps('password')}
 
-            <button type={'submit'}>Login</button>
-            {
-                loginValidation && <div style={{ color: 'red' }}>
-                    {loginValidation}
-                </div>
-            }
-        </form>
-    </div>
+                        />
+                        {
+                            <div className={s.errorStyle}>
+                                {
+                                    formik.touched.password && formik.errors.password
+                                }
+                            </div>
+                        }
+                        <Button type={'submit'} variant={'contained'} color={'primary'}>Login</Button>
+                    </FormGroup>
+                </FormControl>
+            </form>
+        </Grid>
+    </Grid>
 }
+
+
+
+// <input
+//                 placeholder="Email"
+//                 {...formik.getFieldProps('email')}
+//             />
+//             {formik.touched.email &&
+//                 formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
+//             <input
+//                 type="password"
+//                 placeholder="Password"
+//                 {...formik.getFieldProps('password')}
+
+//             />
+//             {formik.touched.password &&
+//                 formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
+
+//             <button type={'submit'}>Login</button>
+//             {
+//                 loginValidation && <div style={{ color: 'red' }}>
+//                     {loginValidation}
+//                 </div>
+//             }

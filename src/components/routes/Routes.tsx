@@ -1,6 +1,7 @@
+import Container from "@material-ui/core/Container";
 import React from "react";
-import {Switch, Route} from "react-router-dom";
-import {PageType, pages} from "./Pages";
+import { Switch, Route } from "react-router-dom";
+import { PageType, pages } from "./Pages";
 
 const mappedRoutes = pages.map((p: PageType) => (
     <Route
@@ -14,9 +15,11 @@ const mappedRoutes = pages.map((p: PageType) => (
 const Routes = () => {
 
     return (
-        <Switch>
-            {mappedRoutes}
-        </Switch>
+        <Container fixed>
+            <Switch>
+                {mappedRoutes}
+            </Switch>
+        </Container>
     );
 };
 
