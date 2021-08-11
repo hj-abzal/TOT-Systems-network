@@ -8,11 +8,14 @@ import { EditProfileInfo } from './EditProfileInfo/EditProfileInfo'
 import { Redirect } from 'react-router-dom'
 import { PATH } from '../../components/routes/Pages'
 import { UserNotes } from '../Notes/userNotes'
+import { NotesType } from '../Notes/notesReducer'
 
 type ProfilePagePropsType = {
-    user: UsersProfileType
+    user: ProfileInfoType
+    userNote: NotesType[]
+    userId: number
 }
-export const ProfilePage: React.FC<ProfilePagePropsType> = ({user}) => {
+export const ProfilePage: React.FC<ProfilePagePropsType> = ({user, userNote, userId}) => {
     const editMode = useSelector<AppStateType, boolean>(state => state.profile.editMode)
     const dispatch = useDispatch()
     const onClickHandler = () => dispatch(setEditModeProfile(true))
@@ -24,7 +27,7 @@ export const ProfilePage: React.FC<ProfilePagePropsType> = ({user}) => {
                 {
                     !editMode && <ProfileInfo profileInfo={user} setEditMode={onClickHandler} />
                 }
-                <UserNotes />
+                <UserNotes userNote={userNote} userId={userId}/>
             </div>
         )
 }

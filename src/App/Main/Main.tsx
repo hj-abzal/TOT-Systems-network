@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { UsersNotesType } from '../../features/Notes/notesReducer';
 import { ProfilePage } from '../../features/ProfilePage/ProfilePage';
 import { UsersProfileType } from '../../features/ProfilePage/profilePageReducer';
 import { AppStateType } from '../store';
@@ -8,13 +9,15 @@ import s from './Main.module.css'
 
 
 export const Main = () => {
-    const id = useSelector<AppStateType, number>(state => state.login.loggedId)
+    const userId = useSelector<AppStateType, number>(state => state.login.loggedId)
     const users = useSelector<AppStateType, UsersProfileType>(state => state.profile)
-    const user = users[id]
+    const usersNotes = useSelector<AppStateType, UsersNotesType>(state => state.notes)
+    const user = users[userId].profileInfo
+    const userNote = usersNotes[userId]
     if (user) {
         return (
             <div className={s.wrapper}>
-                <ProfilePage user={user}/>
+                <ProfilePage user={user} userNote={userNote} userId={userId}/>
             </div>
         )
     } else {
