@@ -1,0 +1,13 @@
+.wrapper {
+  width: 300px;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}

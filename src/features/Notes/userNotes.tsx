@@ -1,3 +1,5 @@
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AddItemForm } from '../../components/AddItemForm/AddItemForm';
@@ -17,21 +19,36 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
     }
     return (
         <div className={s.wrapper}>
-            <div className={s.title}>
+            {/* <div className={s.title}>
                 <h3>Заметки</h3>
-            </div>
-            <AddItemForm addItem={onAddNote} />
-            {
-                userNote.map(n => {
-                    return <UserNote
-                        key={n.id}
-                        userId={userId}
-                        noteId={n.id}
-                        title={n.title}
-                        text={n.text}
-                    />
-                })
-            }
+            </div> */}
+            <Grid container style={{ padding: '20px' }}>
+                <AddItemForm addItem={onAddNote} />
+            </Grid>
+            <Grid container
+                spacing={1}
+                direction="column"
+                justifyContent="center"
+                alignItems="center">
+                {
+                    userNote.map(n => {
+                        return <Grid
+                            item xs={12}
+                            key={n.id}
+
+                        >
+                            <Paper style={{ padding: '10px' }}>
+                                <UserNote
+                                    userId={userId}
+                                    noteId={n.id}
+                                    title={n.title}
+                                    text={n.text}
+                                />
+                            </Paper>
+                        </Grid>
+                    })
+                }
+            </Grid>
         </div>
     )
 }

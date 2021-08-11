@@ -42,6 +42,7 @@ export const AddItemForm = React.memo(function ({ addItem, disabled = false }: A
 
     return <div>
         <TextField variant="outlined"
+            style={{backgroundColor: "white"}}
             disabled={disabled}
             error={!!error}
             value={title}

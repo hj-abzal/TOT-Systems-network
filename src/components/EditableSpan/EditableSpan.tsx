@@ -25,7 +25,7 @@ export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
 
     const addItemHandler = () => {
         let trimmed = title.trim()
-        if (trimmed.length < 50) {
+        if (trimmed.length < 100) {
             if (trimmed !== "") {
                 setEditMode(false);
                 props.onChange(title);

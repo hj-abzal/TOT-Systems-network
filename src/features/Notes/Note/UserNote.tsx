@@ -13,8 +13,8 @@ type UserNotePropsType = {
     text: string
 }
 
-export const UserNote: React.FC<UserNotePropsType> = ({  userId, noteId, title, text }) => {
-    
+export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, text }) => {
+
     const dispatch = useDispatch()
     const onUpdateNoteTitle = (udatedTitle: string) => {
         dispatch(updateUserNote(userId, noteId, udatedTitle, text))
@@ -27,10 +27,15 @@ export const UserNote: React.FC<UserNotePropsType> = ({  userId, noteId, title, 
     }
     return (
         <div className={s.wrapper}>
-            <EditableSpan value={title} onChange={onUpdateNoteTitle} bold />
-            <EditableSpan value={text} onChange={onUpdateNoteText} />
+            <div className={s.title}>
+                <EditableSpan value={title} onChange={onUpdateNoteTitle} bold />
+
+            </div>
+            <div>
+                <EditableSpan value={text} onChange={onUpdateNoteText} />
+            </div>
             <IconButton onClick={onDeleteNote}>
-                <Delete />
+                <Delete fontSize="small" />
             </IconButton>
         </div>
     )
