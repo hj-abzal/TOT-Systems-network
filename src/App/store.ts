@@ -1,18 +1,22 @@
-import { registReducer, RegistReducerActionTypes } from './../features/authorization/Registration/registReducer';
+import {
+  registReducer,
+  RegistReducerActionTypes,
+} from './../features/authorization/Registration/registReducer'
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import thunk from 'redux-thunk'
 
 import { loadState, saveState } from '../utils/localStorage'
-import { loginReducer } from '../features/authorization/Login/loginReducer';
-import { profilePageReducer } from '../features/ProfilePage/profilePageReducer';
+import { loginReducer } from '../features/authorization/Login/loginReducer'
+import { profilePageReducer } from '../features/ProfilePage/profilePageReducer'
+import { notesReducer } from '../features/Notes/notesReducer'
 
 let rootReducer = combineReducers({
   login: loginReducer,
   registration: registReducer,
   profile: profilePageReducer,
+  notes: notesReducer,
 })
-
 
 export type StoreType = typeof store
 
@@ -46,6 +50,7 @@ store.subscribe(() => {
   saveState({
     login: store.getState().login,
     registration: store.getState().registration,
-    profile: store.getState().profile
+    profile: store.getState().profile,
+    notes: store.getState().notes,
   })
 })

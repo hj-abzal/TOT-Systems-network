@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux'
+import { addUserNote, NotesReducerActionTypes } from '../../Notes/notesReducer'
 import {
   addUserProfile,
   ProfilePageReducerActionTypes,
@@ -59,11 +60,12 @@ export const updateRegistredUser = (
 export const addUser =
   (firstName: string, lastName: string, email: string, password: string) =>
   (
-    dispatch: Dispatch<RegistReducerActionTypes | ProfilePageReducerActionTypes>
+    dispatch: Dispatch<RegistReducerActionTypes | ProfilePageReducerActionTypes | NotesReducerActionTypes>
   ) => {
     let id = Date.now()
     dispatch(addRegisteredUser({ id, firstName, lastName, email, password }))
     dispatch(addUserProfile({ id, firstName, lastName, email, password }))
+    dispatch(addUserNote(id))
   }
 // types
 type InitialStateType = typeof initialState

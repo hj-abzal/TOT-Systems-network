@@ -4,9 +4,9 @@ import { RegisteredUserType } from '../authorization/Registration/registReducer'
 const initialState = {}
 
 export const notesReducer = (
-  state: UserNotesType = initialState,
+  state: UsersNotesType = initialState,
   action: NotesReducerActionTypes
-): UserNotesType => {
+): UsersNotesType => {
   switch (action.type) {
     case notesReducerActions.ADD_USER_NOTE:
       return {
@@ -15,7 +15,7 @@ export const notesReducer = (
           {
             id: 0,
             title: 'Первая заметка',
-            text: 'Пример записи первой рабочей заметки.',
+            text: 'Нажмите дважды  на заголовок или текст для режима радектирования',
           },
         ],
       }
@@ -31,8 +31,22 @@ export const notesReducer = (
     case notesReducerActions.ADD_NOTE:
       return {
         ...state,
-        [action.userId]: [action.payload, ...state[action.userId]],
+        [action.userId]: [
+          {
+            ...action.payload,
+            text: 'Нажмите дважды  на заголовок или текст для режима радектирования',
+          },
+          ...state[action.userId],
+        ],
       }
+    case notesReducerActions.DELETE_NOTE:
+      return {
+        ...state,
+        [action.userId]: state[action.userId].filter(
+          n => n.id !== action.noteId
+        ),
+      }
+
     default:
       return state
   }
@@ -69,9 +83,9 @@ export const updateUserNote = (
   } as const
 }
 
-export const addNote = (userId: number, title: string, text: string) => {
+export const addNote = (userId: number, title: string) => {
   let id = Date.now()
-  let payload = { id, title, text }
+  let payload = { id, title }
   return {
     type: notesReducerActions.ADD_NOTE,
     userId,
@@ -81,11 +95,12 @@ export const addNote = (userId: number, title: string, text: string) => {
 
 export const deleteNote = (userId: number, noteId: number) => {
   return {
-    type: notesReducerActions.ADD_NOTE,
+    type: notesReducerActions.DELETE_NOTE,
     userId,
     noteId,
   } as const
 }
+
 //thunks
 
 // export const updateUserProfile =
@@ -106,7 +121,7 @@ export type NotesReducerActionTypes =
   | ReturnType<typeof addNote>
   | ReturnType<typeof deleteNote>
 
-export type UserNotesType = {
+export type UsersNotesType = {
   [key: number]: NotesType[]
 }
 export type NotesType = {
