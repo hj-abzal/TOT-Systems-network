@@ -3,31 +3,38 @@ import { useSelector } from 'react-redux'
 import userPng from '../../../assets/user.png'
 import s from './ProfileInfo.module.css'
 import Button from '@material-ui/core/Button'
-import { RegisteredUserType } from '../../authorization/Registration/registReducer'
+import { ProfileInfoType } from '../profilePageReducer'
 
 type ProfileInfoPropsType = {
-    profileInfo: RegisteredUserType
+    profileInfo: ProfileInfoType
+    setEditMode: () => void
 }
-export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({profileInfo}) => {
-        
-        return (
-            <div className={s.wrapper}>
-                    <div className={s.user}>
-                        <img className={s.userPhoto} src={userPng} alt="" />
-                                <Button size="small" variant="outlined" color="primary">выйти</Button>
-                                <Button size="small" variant="outlined" color="primary">редактировать</Button>
-                    </div>
-                    <div className={s.profileInfo} >
-                        <div>
-                            <b>{profileInfo.firstName + ' ' + profileInfo.lastName}</b>
-                        </div>
-                        <div>
-                            <b>{profileInfo.email}</b>
-                        </div>
-                        <div>
-                            <b>status: </b>
-                        </div>
-                    </div>
+export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({ profileInfo, setEditMode }) => {
+    const userImg = profileInfo.imgUrl  ? profileInfo.imgUrl : userPng
+    return (
+        <div className={s.wrapper}>
+            <div className={s.user}>
+                <img className={s.userPhoto} src={userImg}  />
+                <Button size="small" variant="outlined" color="primary">выйти</Button>
+                <Button
+                    size="small"
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => setEditMode()}
+
+                >редактировать</Button>
             </div>
-        )
+            <div className={s.profileInfo} >
+                <div>
+                    <b className={s.userName} >{profileInfo.firstName + ' ' + profileInfo.lastName}</b>
+                </div>
+                <div>
+                    <b>почта: </b>{profileInfo.email} 
+                </div>
+                <div>
+                    <b>status: </b> {profileInfo.status}
+                </div>
+            </div>
+        </div>
+    )
 }

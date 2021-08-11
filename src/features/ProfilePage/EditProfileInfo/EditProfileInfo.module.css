@@ -1,0 +1,19 @@
+
+.userPhoto {
+  width: 100px;
+  border-radius: 50%;
+}
+.textField{
+  width: 400px;
+}
+.errorStyle {
+  height: 20px;
+  color: red;
+}
+
+.buttons{
+  width: 100%;
+  margin-top: 20px;
+  /* justify-content: center;
+  align-items: center; */
+}
