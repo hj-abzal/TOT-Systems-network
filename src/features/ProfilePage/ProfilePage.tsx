@@ -26,14 +26,14 @@ export const ProfilePage = () => {
                     !editMode && <ProfileInfo profileInfo={user.profileInfo} setEditMode={onClickHandler} />
                 }
                 <div className={s.notesBlock}>
-                    {
+                    {/* {
                         user.myPosts.map(p => {
                             return <div key={p.id}>
                                 <b>{p.title}</b>
                                 <p>{p.text}</p>
                             </div>
                         })
-                    }
+                    } */}
                 </div>
             </div>
         )

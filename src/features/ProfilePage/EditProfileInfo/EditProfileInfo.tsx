@@ -4,7 +4,7 @@ import s from './EditProfileInfo.module.css'
 import Button from '@material-ui/core/Button'
 import { RegisteredUserType } from '../../authorization/Registration/registReducer'
 import { AppStateType } from '../../../App/store'
-import { setEditModeProfile, UsersProfileType } from '../profilePageReducer'
+import { ProfileInfoType, setEditModeProfile, updateUserProfile, UsersProfileType } from '../profilePageReducer'
 import { useFormik } from 'formik'
 import Grid from '@material-ui/core/Grid/Grid'
 import FormControl from '@material-ui/core/FormControl'
@@ -41,11 +41,10 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
     }
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            status: ''
-
+            firstName: user.profileInfo.firstName,
+            lastName: user.profileInfo.lastName,
+            email: user.profileInfo.email,
+            status: user.profileInfo.status
         },
         validate: (values) => {
             const errors: FormErrorType = {};
@@ -69,12 +68,18 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
             return errors;
         },
         onSubmit: values => {
-            let { firstName, lastName, email } = values;
             formik.resetForm()
-            console.log(values);
-            // dispatch(addUser(firstName, lastName, email, password))
-            // setEditMode(true)
-
+            let { firstName, lastName, email, status } = values
+            let payload = {
+                id,
+                firstName,
+                lastName,
+                email,
+                status,
+                imgUrl: url
+            }
+            dispatch(updateUserProfile(payload))
+            dispatch(setEditModeProfile(false))
         },
     })
     if (!editMode) {
