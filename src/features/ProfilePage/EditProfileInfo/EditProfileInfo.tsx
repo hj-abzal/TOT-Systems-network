@@ -23,6 +23,7 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
     const dispatch = useDispatch()
     const onClickHandler = () => dispatch(setEditModeProfile(false))
     const user = users[id]
+    const email = user.profileInfo.email
     const registeredUsers = useSelector<AppStateType, RegisteredUserType[]>(state => state.registration.registeredUsers)
     const editMode = useSelector<AppStateType, boolean>(state => state.profile.editMode)
     const [url, setUrl] = useState('');
@@ -48,19 +49,11 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
         },
         validate: (values) => {
             const errors: FormErrorType = {};
-            let checkEmail = registeredUsers.find(u => u.email === values.email)
             if (!values.firstName) {
                 errors.firstName = 'Обязательное поле'
             }
             if (!values.lastName) {
                 errors.lastName = 'Обязательное поле'
-            }
-            if (!values.email) {
-                errors.email = 'Обязательное поле';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Не действительная эл.почта'
-            } else if (checkEmail !== undefined) {
-                errors.email = 'Эта эл.почта уже заригестрирована'
             }
             if (values.status.length > 70) {
                 errors.status = 'Не больше 70 символов'
@@ -69,7 +62,7 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
         },
         onSubmit: values => {
             formik.resetForm()
-            let { firstName, lastName, email, status } = values
+            let { firstName, lastName, status } = values
             let payload = {
                 id,
                 firstName,
@@ -133,18 +126,6 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
                                     <div className={s.errorStyle}>
                                         {
                                             formik.touched.lastName && formik.errors.lastName
-                                        }
-                                    </div>
-                                }
-                                <TextField
-                                    label="Эл.почта"
-                                    margin="normal"
-                                    {...formik.getFieldProps('email')}
-                                />
-                                {
-                                    <div className={s.errorStyle}>
-                                        {
-                                            formik.touched.email && formik.errors.email
                                         }
                                     </div>
                                 }
