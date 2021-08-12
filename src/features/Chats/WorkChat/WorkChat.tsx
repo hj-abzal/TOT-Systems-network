@@ -1,17 +1,57 @@
-import React from 'react';
+import IconButton from '@material-ui/core/IconButton';
+import { SendRounded } from '@material-ui/icons';
+import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { AddItemForm } from '../../../components/AddItemForm/AddItemForm';
+import { MessageItem } from '../../../components/Message/MessageItem';
+import { ProfileInfoType } from '../../ProfilePage/profilePageReducer';
 import s from './WorkChat.module.css'
+import { MessageType, sendMessage } from './workChatReducer';
 
+type WorkChatPropsType = {
+    userWorkChat: MessageType[]
+    userId: number
+    user: ProfileInfoType
+}
 
+export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, user }) => {
+    const dispatch = useDispatch()
+    const scroll = useRef(null)
+    useEffect(() => {
+        //@ts-ignore
+        scroll.current.scrollIntoView({ behavior: 'smooth' })
+    }, [userWorkChat]);
+    const onClickHandler = (title: string) => {
+        dispatch(sendMessage(userId, title))
+    }
 
-export const WorkChat = () => {
     return (
         <div className={s.wrapper}>
             <div className={s.content}>
                 chat
+                {userWorkChat?.map(m => {
+                    return <MessageItem
+                        key={m.id}
+                        message={m.text}
+                        name={user.firstName + " " + user.lastName}
+                        time={m.time}
+                        userPhoto={user.imgUrl}
+                        me={true}
+                    />
+
+                })}
+
+                <div ref={scroll}></div>
             </div>
             <div className={s.footer}>
-                <input type="text" />
-                <button>send</button>
+
+                <AddItemForm 
+                addItem={onClickHandler} 
+                multiline={true} 
+                className={s.divWrapper} 
+                inputStyle={s.messageInput}
+                />
             </div>
         </div>
     )

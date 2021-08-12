@@ -1,11 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
+import { ProfileInfoType } from '../ProfilePage/profilePageReducer';
 import s from './Chats.module.css'
 import { WorkChat } from './WorkChat/WorkChat';
+import { MessageType } from './WorkChat/workChatReducer';
 
+type ChatsPropsType = {
+    userWorkChat: MessageType[]
+    userId: number
+    user: ProfileInfoType
+}
 
-
-export const Chats = () => {
+export const Chats: React.FC<ChatsPropsType> = ({ userWorkChat, userId, user }) => {
     const [editMode, setEditMode] = useState(true)
 
 
@@ -20,7 +26,15 @@ export const Chats = () => {
                 </div>
             </div>
             {
-                editMode ? <WorkChat /> : <WorkChat />
+                editMode ? <WorkChat
+                    userWorkChat={userWorkChat}
+                    userId={userId}
+                    user={user}
+                /> : <WorkChat
+                    userWorkChat={userWorkChat}
+                    userId={userId}
+                    user={user}
+                />
             }
 
         </div>

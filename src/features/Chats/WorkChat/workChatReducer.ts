@@ -16,7 +16,7 @@ export const workChatReducer = (
     case workChatReducerActions.SEND_MESSAGE:
       return {
         ...state,
-        [action.userId]: [],
+        [action.userId]: [...state[action.userId], { ...action.payload }],
       }
     default:
       return state
@@ -38,10 +38,10 @@ export const addUserChat = (userId: number) => {
   } as const
 }
 
-export const sendMessage = (userId: number, message: string) => {
+export const sendMessage = (userId: number, text: string) => {
   let id = Date.now()
-  const time = new Date().toTimeString().slice(0, 5);
-  let payload = { id, message, time }
+  const time = new Date().toTimeString().slice(0, 5)
+  let payload: MessageType = { id, text, time }
   return {
     type: workChatReducerActions.SEND_MESSAGE,
     userId,

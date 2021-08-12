@@ -6,8 +6,18 @@
 
 .content {
   flex-grow: 1;
+  overflow: auto;
+  height: 500px;
 }
 
+.divWrapper {
+  display: flex;
+  justify-content: center;
+}
+.messageInput {
+  width: 80%;
+  background-color: #b5c3fa;
+}
 .footer {
   border-top: 3px solid #b5c3fa;
   height: 70px;

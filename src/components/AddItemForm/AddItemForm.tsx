@@ -1,14 +1,21 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
-import { Box, Button, FormControl, IconButton, TextField } from '@material-ui/core';
-import { AddBox } from '@material-ui/icons';
+import { IconButton, TextField } from '@material-ui/core';
+import { AddBox, SendRounded } from '@material-ui/icons';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
     disabled?: boolean
+    multiline?: boolean
+    emoji?: boolean
+    className?: string
+    inputStyle?: string
 
 }
 
-export const AddItemForm = React.memo(function ({ addItem, disabled = false }: AddItemFormPropsType) {
+export const AddItemForm = React.memo(function (
+    {
+        addItem, disabled = false, multiline, emoji, className, inputStyle
+    }: AddItemFormPropsType) {
 
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
@@ -41,18 +48,49 @@ export const AddItemForm = React.memo(function ({ addItem, disabled = false }: A
     }
 
     return <div>
-        <TextField variant="outlined"
-            style={{backgroundColor: "white"}}
-            disabled={disabled}
-            error={!!error}
-            value={title}
-            onChange={onChangeHandler}
-            onKeyPress={onKeyPressHandler}
-            label="Текст"
-            helperText={error}
-        />
-        <IconButton color="primary" onClick={addItemHandler} disabled={disabled}>
-            <AddBox />
-        </IconButton>
+        {
+            multiline ? <div className={className}>
+                {
+                    emoji && <IconButton>
+                        <SendRounded />
+                    </IconButton>
+                }
+                <TextField
+                    className={inputStyle}
+                    variant="filled"
+                    multiline
+                    disabled={disabled}
+                    error={!!error}
+                    value={title}
+                    onChange={onChangeHandler}
+                    onKeyPress={onKeyPressHandler}
+                    label="Текст"
+                    helperText={error}
+                />
+
+                <IconButton color="primary" onClick={addItemHandler} disabled={disabled}>
+                    <SendRounded fontSize={"large"} />
+                </IconButton>
+            </div>
+                : <div className={className}>
+                    <TextField
+                        variant="outlined"
+                        className={className}
+                        disabled={disabled}
+                        error={!!error}
+                        value={title}
+                        onChange={onChangeHandler}
+                        onKeyPress={onKeyPressHandler}
+                        label="Текст"
+                        helperText={error}
+                    />
+                    <IconButton color="primary" onClick={addItemHandler} disabled={disabled}>
+                        <AddBox />
+                    </IconButton>
+                </div>
+
+        }
+
+
     </div>
 })
