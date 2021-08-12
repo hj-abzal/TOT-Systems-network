@@ -24,10 +24,8 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
                 <AddItemForm addItem={onAddNote} />
             </div>
             <div className={s.noteItems}>
-            
                     {
                         userNote.map(n => {
-                            // return <Paper key={n.id} style={{ padding: '10px' }}>
                             return <UserNote
                                 key={n.id}
                                 userId={userId}
@@ -35,11 +33,8 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
                                 title={n.title}
                                 text={n.text}
                             />
-                            // </Paper>
                         })
                     }
-            
-
             </div>
         </div>
     )

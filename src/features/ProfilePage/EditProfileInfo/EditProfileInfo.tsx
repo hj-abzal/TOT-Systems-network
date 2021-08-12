@@ -52,8 +52,8 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
             if (!values.lastName) {
                 errors.lastName = 'Обязательное поле'
             }
-            if (values.status.length > 70) {
-                errors.status = 'Не больше 70 символов'
+            if (values.status.length > 50) {
+                errors.status = 'Не больше 50 символов'
             }
             return errors;
         },

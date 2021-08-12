@@ -6,7 +6,8 @@
   background-color: #fafafa;
 }
 .App {
-  background-color: rgb(228, 225, 225);
+  /* background-color: rgb(228, 225, 225); */
+  background-color:  #b5c3fa;
   display: flex;
   justify-content: center;
   align-items: center;

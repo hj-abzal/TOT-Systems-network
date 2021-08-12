@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { UsersNotesType } from '../../features/Notes/notesReducer';
 import { ProfilePage } from '../../features/ProfilePage/ProfilePage';
 import { UsersProfileType } from '../../features/ProfilePage/profilePageReducer';
-import { WorkChat } from '../../features/WorkChat/WorkChat';
+import { Chats } from '../../features/Chats/Chats';
 import { AppStateType } from '../store';
 import s from './Main.module.css'
 
@@ -18,11 +18,13 @@ export const Main = () => {
     if (user) {
         return (
             <div className={s.wrapper}>
-                <div className={s.profile}>
-                    <ProfilePage user={user} userNote={userNote} userId={userId} />
-                </div>
-                <div className={s.chats}>
-                    <WorkChat />
+                <div className={s.container}>
+                    <div className={s.profile}>
+                        <ProfilePage user={user} userNote={userNote} userId={userId} />
+                    </div>
+                    <div className={s.chats}>
+                        <Chats />
+                    </div>
                 </div>
             </div>
         )

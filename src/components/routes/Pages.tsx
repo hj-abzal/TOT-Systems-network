@@ -5,7 +5,7 @@ import { Login } from "../../features/authorization/Login/Login";
 import { Registration } from "../../features/authorization/Registration/Registration";
 import { EditProfileInfo } from "../../features/ProfilePage/EditProfileInfo/EditProfileInfo";
 import { ProfilePage } from "../../features/ProfilePage/ProfilePage";
-import { WorkChat } from "../../features/WorkChat/WorkChat";
+import { Chats } from "../../features/Chats/Chats";
 import { AuthRedirect } from "../Redirect/AuthRedirect";
 
 
@@ -34,6 +34,6 @@ export const pages: PageType[] = [
     { _id: 1, title: "login", path: PATH.LOGIN, exact: true, page: <Login /> },
     { _id: 2, title: "register", path: PATH.REGISTER, exact: true, page: <Registration /> },
     { _id: 3, title: "editProfile", path: PATH.EDIT_PROFILE, exact: true, page: <EditProfileInfo /> },
-    { _id: 4, title: "workChat", path: PATH.WORK_CHAT, exact: true, page: <WorkChat /> },
+    { _id: 4, title: "workChat", path: PATH.WORK_CHAT, exact: true, page: <Chats /> },
     { _id: 777, title: "error404", page: <div>error404</div> }
 ];

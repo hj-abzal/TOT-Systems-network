@@ -17,7 +17,7 @@ type UserNotePropsType = {
 }
 
 export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, text }) => {
-    const [selectedColor, setSelectedColor] = useState("#F0EBCC")
+    const [selectedColor, setSelectedColor] = useState("#b5c3fa")
     const [visible, setVisible] = useState(false);
     const show = () => setVisible(true);
     const hide = () => setVisible(false);
@@ -32,25 +32,27 @@ export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, t
         dispatch(deleteNote(userId, noteId))
     }
     return (
-        <div className={s.wrapper} >
-            <div className={s.item} style={{ backgroundColor: selectedColor }}>
-                <div className={s.title}>
-                    <EditableSpan value={title} onChange={onUpdateNoteTitle} bold />
-                </div>
-                <div className={s.text}>
-                    <EditableSpan value={text} onChange={onUpdateNoteText} />
-                </div>
-                <div className={s.buttons}>
-                    <IconButton onClick={onDeleteNote}>
-                        <Delete fontSize="small" />
-                    </IconButton>
-                    <Tippy visible={visible} onClickOutside={hide} interactive={true} placement={'bottom'} content={
-                        <HexColorPicker color={selectedColor} onChange={setSelectedColor} />
-                    }>
-                        <IconButton onClick={visible ? hide : show}>
-                            <PaletteIcon fontSize="small" />
+        <div>
+            <div className={s.container}>
+                <div className={s.item} style={{ backgroundColor: selectedColor }}>
+                    <div className={s.title}>
+                        <EditableSpan value={title} onChange={onUpdateNoteTitle} bold />
+                    </div>
+                    <div className={s.text}>
+                        <EditableSpan value={text} onChange={onUpdateNoteText} />
+                    </div>
+                    <div className={s.buttons}>
+                        <IconButton onClick={onDeleteNote}>
+                            <Delete fontSize="small" />
                         </IconButton>
-                    </Tippy>
+                        <Tippy visible={visible} onClickOutside={hide} interactive={true} placement={'bottom'} content={
+                            <HexColorPicker color={selectedColor} onChange={setSelectedColor} />
+                        }>
+                            <IconButton onClick={visible ? hide : show}>
+                                <PaletteIcon fontSize="small" />
+                            </IconButton>
+                        </Tippy>
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,7 +34,7 @@ export const notesReducer = (
         [action.userId]: [
           {
             ...action.payload,
-            text: 'Нажмите дважды  на заголовок или текст для режима радектирования',
+            text: 'Нажмите дважды  на заголовок или текст для режима радaктирования',
           },
           ...state[action.userId],
         ],
@@ -101,17 +101,6 @@ export const deleteNote = (userId: number, noteId: number) => {
   } as const
 }
 
-//thunks
-
-// export const updateUserProfile =
-//   (payload: ProfileInfoType) =>
-//   (
-//     dispatch: Dispatch<ProfilePageReducerActionTypes | RegistReducerActionTypes>
-//   ) => {
-//     let { id, firstName, lastName, email } = payload
-//     dispatch(updateProfile(payload))
-//     dispatch(updateRegistredUser(id, firstName, lastName, email))
-//   }
 // types
 type InitialStateType = typeof initialState
 
