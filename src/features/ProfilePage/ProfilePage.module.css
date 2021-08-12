@@ -1,32 +1,6 @@
 .wrapper {
-  flex: 0.4;
-  border: 1px solid #1f304b;
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
-}
-
-.profileInfoBlock {
-  height: 200px;
-  border-bottom: 1px solid #1f304b;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.user {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.userPhoto {
-  width: 100px;
-  border-radius: 50%;
-}
-
-
-.profileInfo {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
+  height: 100%;
 }

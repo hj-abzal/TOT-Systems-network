@@ -51,74 +51,49 @@ export const Login = () => {
     if (isLoggedIn) {
         return <Redirect to={PATH.MAIN} />
     }
-    return <Grid container justify="center">
+    return <div>
         <ErrorSnackbar />
-        <Grid item xs={4}>
-            <form onSubmit={formik.handleSubmit}>
-                <FormControl>
-                    <FormLabel>
-                        <p>Planktonics messanger v1.0 </p>                        
-                        <p>специально для TOT Systems</p>
-                        <p>Чтобы зарегистрироваться нажмите
-                            <NavLink to={PATH.REGISTER}> здесь</NavLink>
-                        </p>
-                    </FormLabel>
-                    <FormGroup>
-                        <TextField
-                            label="Email"
-                            margin="normal"
-                            {...formik.getFieldProps('email')}
-                        />
+        <form onSubmit={formik.handleSubmit}>
+            <FormControl>
+                <FormLabel>
+                    <b>Planktonics messanger v1.0 </b>
+                    <p>специально для <b>TOT Systems</b></p>
+                    <p>Чтобы зарегистрироваться нажмите
+                        <NavLink to={PATH.REGISTER}><b> здесь</b></NavLink>
+                    </p>
+                </FormLabel>
+                <FormGroup>
+                    <TextField
+                        label="Email"
+                        margin="normal"
+                        {...formik.getFieldProps('email')}
+                    />
 
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.email && formik.errors.email
-                                }
-                            </div>
-                        }
-                        <TextField
-                            type="password"
-                            label="Password"
-                            margin="normal"
-                            {...formik.getFieldProps('password')}
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.email && formik.errors.email
+                            }
+                        </div>
+                    }
+                    <TextField
+                        type="password"
+                        label="Password"
+                        margin="normal"
+                        {...formik.getFieldProps('password')}
 
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.password && formik.errors.password
-                                }
-                            </div>
-                        }
-                        <Button type={'submit'} variant={'contained'} color={'primary'}>Login</Button>
-                    </FormGroup>
-                </FormControl>
-            </form>
-        </Grid>
-    </Grid>
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.password && formik.errors.password
+                            }
+                        </div>
+                    }
+                    <Button type={'submit'} variant={'contained'} color={'primary'}>Login</Button>
+                </FormGroup>
+            </FormControl>
+        </form>
+    </div>
 }
 
-
-
-// <input
-//                 placeholder="Email"
-//                 {...formik.getFieldProps('email')}
-//             />
-//             {formik.touched.email &&
-//                 formik.errors.email ? <div style={{ color: 'red' }}>{formik.errors.email}</div> : null}
-//             <input
-//                 type="password"
-//                 placeholder="Password"
-//                 {...formik.getFieldProps('password')}
-
-//             />
-//             {formik.touched.password &&
-//                 formik.errors.password ? <div style={{ color: 'red' }}>{formik.errors.password}</div> : null}
-
-//             <button type={'submit'}>Login</button>
-//             {
-//                 loginValidation && <div style={{ color: 'red' }}>
-//                     {loginValidation}
-//                 </div>
-//             }

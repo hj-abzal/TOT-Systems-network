@@ -1,5 +1,15 @@
 .wrapper {
-    height: 100vh;
-    display: flex;
-  }
-  
+  width: 900px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.profile {
+  width: 35%;
+}
+.chats {
+  width: 65%;
+}

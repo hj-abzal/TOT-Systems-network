@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { addUser, RegisteredUserType } from './registReducer';
 import Grid from '@material-ui/core/Grid/Grid';
@@ -10,6 +10,7 @@ import FormGroup from '@material-ui/core/FormGroup/FormGroup';
 import Button from '@material-ui/core/Button/Button';
 import TextField from '@material-ui/core/TextField/TextField';
 import s from './Registration.module.css'
+import { PATH } from '../../../components/routes/Pages';
 
 export const Registration = (props: any) => {
     const registeredUsers = useSelector<AppStateType, RegisteredUserType[]>(state => state.registration.registeredUsers)
@@ -70,82 +71,83 @@ export const Registration = (props: any) => {
     if (editMode) {
         return <Redirect to={'/'} />
     }
-    return <Grid container justify="center">
-        <Grid item xs={4}>
-            <form onSubmit={formik.handleSubmit}>
-                <FormControl>
-                    <FormGroup>
-                        <TextField
-                            className={s.textField}
-                            label="Имя"
-                            margin="normal"
-                            {...formik.getFieldProps('firstName')}
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.firstName && formik.errors.firstName
-                                }
-                            </div>
-                        }
-                        <TextField
-                            label="Фамилия"
-                            margin="normal"
-                            {...formik.getFieldProps('lastName')}
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.lastName && formik.errors.lastName
-                                }
-                            </div>
-                        }
-                        <TextField
-                            label="Эл.почта"
-                            margin="normal"
-                            {...formik.getFieldProps('email')}
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.email && formik.errors.email
-                                }
-                            </div>
-                        }
-                        <TextField
-                            type="password"
-                            label="пароль"
-                            margin="normal"
-                            {...formik.getFieldProps('password')}
+    return <div >
+        <form onSubmit={formik.handleSubmit}>
+            <FormControl >
+                <Button className={s.linkButton} variant={'contained'} >
+                    <NavLink to={PATH.LOGIN}>login</NavLink>
+                </Button>
+                <FormGroup>
+                    <TextField
+                        className={s.textField}
+                        label="Имя"
+                        margin="normal"
+                        {...formik.getFieldProps('firstName')}
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.firstName && formik.errors.firstName
+                            }
+                        </div>
+                    }
+                    <TextField
+                        label="Фамилия"
+                        margin="normal"
+                        {...formik.getFieldProps('lastName')}
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.lastName && formik.errors.lastName
+                            }
+                        </div>
+                    }
+                    <TextField
+                        label="Эл.почта"
+                        margin="normal"
+                        {...formik.getFieldProps('email')}
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.email && formik.errors.email
+                            }
+                        </div>
+                    }
+                    <TextField
+                        type="password"
+                        label="пароль"
+                        margin="normal"
+                        {...formik.getFieldProps('password')}
 
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.password && formik.errors.password
-                                }
-                            </div>
-                        }
-                        <TextField
-                            type="password"
-                            label="введите ещё раз пароль"
-                            margin="normal"
-                            {...formik.getFieldProps('passwordCheck')}
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.password && formik.errors.password
+                            }
+                        </div>
+                    }
+                    <TextField
+                        type="password"
+                        label="введите ещё раз пароль"
+                        margin="normal"
+                        {...formik.getFieldProps('passwordCheck')}
 
-                        />
-                        {
-                            <div className={s.errorStyle}>
-                                {
-                                    formik.touched.passwordCheck && formik.errors.passwordCheck
-                                }
-                            </div>
-                        }
-                        <Button type={'submit'} variant={'contained'} color={'primary'}>зарегистрироваться</Button>
-                    </FormGroup>
-                </FormControl>
-            </form>
-        </Grid>
-    </Grid>
+                    />
+                    {
+                        <div className={s.errorStyle}>
+                            {
+                                formik.touched.passwordCheck && formik.errors.passwordCheck
+                            }
+                        </div>
+                    }
+                    <Button type={'submit'} variant={'contained'} color={'primary'}>зарегистрироваться</Button>
+                </FormGroup>
+            </FormControl>
+        </form>
+    </div>
 }
 
 

@@ -1,19 +1,29 @@
-
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.userPhotoBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .userPhoto {
   width: 100px;
   border-radius: 50%;
 }
-.textField{
-  width: 400px;
-}
+
 .errorStyle {
   height: 20px;
   color: red;
 }
 
-.buttons{
-  width: 100%;
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   margin-top: 20px;
-  /* justify-content: center;
-  align-items: center; */
 }

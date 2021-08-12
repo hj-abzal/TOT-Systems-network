@@ -1,13 +1,21 @@
 .wrapper {
   width: 300px;
   min-height: 70px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-.title {
+.item {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.title {
+ 
+}
+
+.text {
+  text-align: center;
 }

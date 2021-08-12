@@ -4,7 +4,7 @@ import s from './EditProfileInfo.module.css'
 import Button from '@material-ui/core/Button'
 import { RegisteredUserType } from '../../authorization/Registration/registReducer'
 import { AppStateType } from '../../../App/store'
-import { ProfileInfoType, setEditModeProfile, updateUserProfile, UsersProfileType } from '../profilePageReducer'
+import { setEditModeProfile, updateUserProfile, UsersProfileType } from '../profilePageReducer'
 import { useFormik } from 'formik'
 import Grid from '@material-ui/core/Grid/Grid'
 import FormControl from '@material-ui/core/FormControl'
@@ -24,7 +24,6 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
     const onClickHandler = () => dispatch(setEditModeProfile(false))
     const user = users[id]
     const email = user.profileInfo.email
-    const registeredUsers = useSelector<AppStateType, RegisteredUserType[]>(state => state.registration.registeredUsers)
     const editMode = useSelector<AppStateType, boolean>(state => state.profile.editMode)
     const [url, setUrl] = useState('');
     useEffect(() => {
@@ -36,7 +35,6 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
     type FormErrorType = {
         firstName?: string
         lastName?: string
-        email?: string
         status?: string
 
     }
@@ -44,7 +42,6 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
         initialValues: {
             firstName: user.profileInfo.firstName,
             lastName: user.profileInfo.lastName,
-            email: user.profileInfo.email,
             status: user.profileInfo.status
         },
         validate: (values) => {
@@ -89,8 +86,8 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
         }
         const userImg = user.profileInfo.imgUrl ? user.profileInfo.imgUrl : userPng
         return (
-            <Grid container justify="center">
-                <Grid item xs={12}>
+            <div className={s.wrapper}>
+                <div className={s.userPhotoBlock}>
                     <img className={s.userPhoto} src={userImg} />
                     <input
                         type="file"
@@ -101,58 +98,58 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
                         }}
                         name="fileInput"
                     />
-                    <form onSubmit={formik.handleSubmit}>
-                        <FormControl>
-                            <FormGroup>
-                                <TextField
-                                    className={s.textField}
-                                    label="Имя"
-                                    margin="normal"
-                                    {...formik.getFieldProps('firstName')}
-                                />
-                                {
-                                    <div className={s.errorStyle}>
-                                        {
-                                            formik.touched.firstName && formik.errors.firstName
-                                        }
-                                    </div>
-                                }
-                                <TextField
-                                    label="Фамилия"
-                                    margin="normal"
-                                    {...formik.getFieldProps('lastName')}
-                                />
-                                {
-                                    <div className={s.errorStyle}>
-                                        {
-                                            formik.touched.lastName && formik.errors.lastName
-                                        }
-                                    </div>
-                                }
-                                <TextField
-                                    label="Статус"
-                                    margin="normal"
-                                    {...formik.getFieldProps('status')}
-                                />
-                                {
-                                    <div className={s.errorStyle}>
-                                        {
-                                            formik.touched.status && formik.errors.status
-                                        }
-                                    </div>
-                                }
-                                <div className={s.buttons}>
-                                    <Button type={'submit'} variant={'contained'} color={'primary'}>сохранить</Button>
-                                </div>
+                </div>
 
-                            </FormGroup>
-                        </FormControl>
-                    </form>
-                    <div className={s.buttons}>
-                        <Button type={'submit'} color={'primary'} onClick={onClickHandler}>отменить</Button>
-                    </div>
-                </Grid>
-            </Grid>
+                <form onSubmit={formik.handleSubmit}>
+                    <FormControl>
+                        <FormGroup>
+                            <TextField
+                                label="Имя"
+                                margin="normal"
+                                {...formik.getFieldProps('firstName')}
+                            />
+                            {
+                                <div className={s.errorStyle}>
+                                    {
+                                        formik.touched.firstName && formik.errors.firstName
+                                    }
+                                </div>
+                            }
+                            <TextField
+                                label="Фамилия"
+                                margin="normal"
+                                {...formik.getFieldProps('lastName')}
+                            />
+                            {
+                                <div className={s.errorStyle}>
+                                    {
+                                        formik.touched.lastName && formik.errors.lastName
+                                    }
+                                </div>
+                            }
+                            <TextField
+                                label="Статус"
+                                margin="normal"
+                                {...formik.getFieldProps('status')}
+                            />
+                            {
+                                <div className={s.errorStyle}>
+                                    {
+                                        formik.touched.status && formik.errors.status
+                                    }
+                                </div>
+                            }
+                            <div className={s.buttons}>
+                                <Button type={'submit'} variant={'contained'} color={'primary'}>сохранить</Button>
+                            </div>
+
+                        </FormGroup>
+                    </FormControl>
+                </form>
+                <div className={s.buttons}>
+                    <Button type={'submit'} color={'primary'} onClick={onClickHandler}>отменить</Button>
+                </div>
+            </div>
         )
     } else {
         return (

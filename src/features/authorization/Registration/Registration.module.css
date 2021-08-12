@@ -1,9 +1,10 @@
-
 .errorStyle {
   height: 20px;
   color: red;
 }
-
-.textField{
-  width: 400px;
+.linkButton {
+  width: 50px;
+}
+.textField {
+  width: 300px;
 }

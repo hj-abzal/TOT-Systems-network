@@ -19,36 +19,28 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
     }
     return (
         <div className={s.wrapper}>
-            {/* <div className={s.title}>
-                <h3>Заметки</h3>
-            </div> */}
-            <Grid container style={{ padding: '20px' }}>
+            <div className={s.header}>
+                <b className={s.title}>Заметки</b>
                 <AddItemForm addItem={onAddNote} />
-            </Grid>
-            <Grid container
-                spacing={1}
-                direction="column"
-                justifyContent="center"
-                alignItems="center">
-                {
-                    userNote.map(n => {
-                        return <Grid
-                            item xs={12}
-                            key={n.id}
+            </div>
+            <div className={s.noteItems}>
+            
+                    {
+                        userNote.map(n => {
+                            // return <Paper key={n.id} style={{ padding: '10px' }}>
+                            return <UserNote
+                                key={n.id}
+                                userId={userId}
+                                noteId={n.id}
+                                title={n.title}
+                                text={n.text}
+                            />
+                            // </Paper>
+                        })
+                    }
+            
 
-                        >
-                            <Paper style={{ padding: '10px' }}>
-                                <UserNote
-                                    userId={userId}
-                                    noteId={n.id}
-                                    title={n.title}
-                                    text={n.text}
-                                />
-                            </Paper>
-                        </Grid>
-                    })
-                }
-            </Grid>
+            </div>
         </div>
     )
 }
