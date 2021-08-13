@@ -11,6 +11,7 @@ import { loginReducer } from '../features/authorization/Login/loginReducer'
 import { profilePageReducer } from '../features/ProfilePage/profilePageReducer'
 import { notesReducer } from '../features/Notes/notesReducer'
 import { workChatReducer } from '../features/Chats/WorkChat/workChatReducer'
+import { talkChatReducer } from '../features/Chats/TalkChat/talkChatReducer'
 
 let rootReducer = combineReducers({
   login: loginReducer,
@@ -18,6 +19,7 @@ let rootReducer = combineReducers({
   profile: profilePageReducer,
   notes: notesReducer,
   workChat: workChatReducer,
+  talkChat: talkChatReducer
 })
 
 export type StoreType = typeof store
@@ -55,5 +57,6 @@ store.subscribe(() => {
     profile: store.getState().profile,
     notes: store.getState().notes,
     workChat: store.getState().workChat,
+    talkChat: store.getState().talkChat
   })
 })

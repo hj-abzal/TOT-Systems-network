@@ -5,9 +5,9 @@ import { RegisteredUserType } from '../../authorization/Registration/registReduc
 const initialState = {}
 
 export const workChatReducer = (
-  state: workChatStateType = initialState,
-  action: workChatReducerActionTypes
-): workChatStateType => {
+  state: WorkChatStateType = initialState,
+  action: WorkChatReducerActionTypes
+): WorkChatStateType => {
   switch (action.type) {
     case workChatReducerActions.ADD_USER_CHAT:
       return {
@@ -29,17 +29,16 @@ export const workChatReducer = (
 const workChatReducerActions = {
   ADD_USER_CHAT: 'workChat/ADD_USER_CHAT',
   SEND_MESSAGE: 'workChat/SEND_MESSAGE',
-  DELETE_MESSAGE: 'workChat/DELETE_MESSAGE',
 } as const
 
-export const addUserChat = (userId: number) => {
+export const addUserChatWork = (userId: number) => {
   return {
     type: workChatReducerActions.ADD_USER_CHAT,
     userId,
   } as const
 }
 
-export const sendMessage = (userId: number, text: string) => {
+export const sendMessageWork = (userId: number, text: string) => {
   let id = Date.now()
   const time = new Date().toTimeString().slice(0, 5)
   let payload: MessageType = { id, text, time }
@@ -50,20 +49,13 @@ export const sendMessage = (userId: number, text: string) => {
   } as const
 }
 
-export const deleteMessage = (userId: number, messageId: number) => {
-  return {
-    type: workChatReducerActions.DELETE_MESSAGE,
-    userId,
-    messageId,
-  } as const
-}
-// types
-export type workChatReducerActionTypes =
-  | ReturnType<typeof addUserChat>
-  | ReturnType<typeof sendMessage>
-  | ReturnType<typeof deleteMessage>
 
-export type workChatStateType = {
+// types
+export type WorkChatReducerActionTypes =
+  | ReturnType<typeof addUserChatWork>
+  | ReturnType<typeof sendMessageWork>
+
+export type WorkChatStateType = {
   [key: number]: MessageType[]
 }
 export type MessageType = {

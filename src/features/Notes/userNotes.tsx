@@ -19,22 +19,22 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
     }
     return (
         <div className={s.wrapper}>
-            <div className={s.header}>
+            <div>
                 <b className={s.title}>Заметки</b>
-                <AddItemForm addItem={onAddNote} />
+                <AddItemForm addItem={onAddNote} className={s.inputStyle} />
             </div>
             <div className={s.noteItems}>
-                    {
-                        userNote.map(n => {
-                            return <UserNote
-                                key={n.id}
-                                userId={userId}
-                                noteId={n.id}
-                                title={n.title}
-                                text={n.text}
-                            />
-                        })
-                    }
+                {
+                    userNote.map(n => {
+                        return <UserNote
+                            key={n.id}
+                            userId={userId}
+                            noteId={n.id}
+                            title={n.title}
+                            text={n.text}
+                        />
+                    })
+                }
             </div>
         </div>
     )

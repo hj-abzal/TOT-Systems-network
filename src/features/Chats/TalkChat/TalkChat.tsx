@@ -1,30 +1,29 @@
-import IconButton from '@material-ui/core/IconButton';
-import { SendRounded } from '@material-ui/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddItemForm } from '../../../components/AddItemForm/AddItemForm';
 import { MessageItem } from '../../../components/Message/MessageItem';
 import { ProfileInfoType } from '../../ProfilePage/profilePageReducer';
 import { workChatData } from '../data';
-import s from './WorkChat.module.css'
-import { MessageType, sendMessageWork } from './workChatReducer';
+import s from './TalkChat.module.css'
+import { MessageType } from '../WorkChat/workChatReducer';
+import { sendMessageTalk } from './talkChatReducer';
 
-type WorkChatPropsType = {
-    userWorkChat: MessageType[]
+type TalkChattPropsType = {
+    userTalkChat: MessageType[]
     userId: number
     user: ProfileInfoType
 }
 
-export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, user }) => {
+export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, user }) => {
     const dispatch = useDispatch()
     const scroll = useRef(null)
     useEffect(() => {
         //@ts-ignore
         scroll.current.scrollIntoView({ behavior: 'smooth' })
-    }, [userWorkChat]);
+    }, [userTalkChat]);
     const onClickHandler = (title: string) => {
-        dispatch(sendMessageWork(userId, title))
+        dispatch(sendMessageTalk(userId, title))
     }
 
     return (
@@ -41,7 +40,7 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
                     />
 
                 })}
-                {userWorkChat?.map(m => {
+                {userTalkChat?.map(m => {
                     return <MessageItem
                         key={m.id}
                         message={m.text}
@@ -62,6 +61,7 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
                     multiline={true}
                     className={s.divWrapper}
                     inputStyle={s.messageInput}
+                    emoji={true}
                 />
             </div>
         </div>

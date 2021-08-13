@@ -6,7 +6,7 @@ import { UsersProfileType } from '../../features/ProfilePage/profilePageReducer'
 import { Chats } from '../../features/Chats/Chats';
 import { AppStateType } from '../store';
 import s from './Main.module.css'
-import { workChatStateType } from '../../features/Chats/WorkChat/workChatReducer';
+import { WorkChatStateType } from '../../features/Chats/WorkChat/workChatReducer';
 
 
 
@@ -14,10 +14,12 @@ export const Main = () => {
     const userId = useSelector<AppStateType, number>(state => state.login.loggedId)
     const users = useSelector<AppStateType, UsersProfileType>(state => state.profile)
     const usersNotes = useSelector<AppStateType, UsersNotesType>(state => state.notes)
-    const userWorkChats = useSelector<AppStateType, workChatStateType>(state => state.workChat)
+    const userWorkChats = useSelector<AppStateType, WorkChatStateType>(state => state.workChat)
+    const userTalkChats = useSelector<AppStateType, WorkChatStateType>(state => state.talkChat)
     const user = users[userId].profileInfo
     const userNote = usersNotes[userId]
     const userWorkChat = userWorkChats[userId]
+    const userTalkChat = userTalkChats[userId]
     if (user) {
         return (
             <div className={s.wrapper}>
@@ -26,7 +28,7 @@ export const Main = () => {
                         <ProfilePage user={user} userNote={userNote} userId={userId} />
                     </div>
                     <div className={s.chats}>
-                        <Chats userWorkChat={userWorkChat} userId={userId} user={user}/>
+                        <Chats userWorkChat={userWorkChat} userId={userId} user={user} userTalkChat={userTalkChat}/>
                     </div>
                 </div>
             </div>

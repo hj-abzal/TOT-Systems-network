@@ -1,8 +1,9 @@
 import { Dispatch } from 'redux'
-import { addUserNote, NotesReducerActionTypes } from '../../Notes/notesReducer'
+import { addUserChatTalk } from '../../Chats/TalkChat/talkChatReducer'
+import { addUserChatWork } from '../../Chats/WorkChat/workChatReducer'
+import { addUserNote } from '../../Notes/notesReducer'
 import {
   addUserProfile,
-  ProfilePageReducerActionTypes,
 } from '../../ProfilePage/profilePageReducer'
 
 const initialState = {
@@ -59,13 +60,13 @@ export const updateRegistredUser = (
 //
 export const addUser =
   (firstName: string, lastName: string, email: string, password: string) =>
-  (
-    dispatch: Dispatch<RegistReducerActionTypes | ProfilePageReducerActionTypes | NotesReducerActionTypes>
-  ) => {
+  (dispatch: Dispatch) => {
     let id = Date.now()
     dispatch(addRegisteredUser({ id, firstName, lastName, email, password }))
     dispatch(addUserProfile({ id, firstName, lastName, email, password }))
     dispatch(addUserNote(id))
+    dispatch(addUserChatTalk(id))
+    dispatch(addUserChatWork(id))
   }
 // types
 type InitialStateType = typeof initialState
