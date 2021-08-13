@@ -27,19 +27,20 @@
 - Данные в чатах берутся из статического файла.
 - Данные пользователя при регистрации, логинизации, в заметках и сообщениях хранятся в Local storage.
 
+#[Демо версия проекта](https://hj-abzal.github.io/TOT-Systems-network)
 ## Скачивание
 
 ```
 yarn
 ```
 
-## Start The App
+## Старт приложения
 
 ```
 yarn start
 ```
 
-## Build The Project
+## Build
 
 ```
 yarn build
