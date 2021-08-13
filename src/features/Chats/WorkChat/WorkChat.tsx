@@ -14,7 +14,7 @@ type WorkChatPropsType = {
     user: ProfileInfoType
 }
 
-export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, user }) => {
+export const WorkChat: React.FC<WorkChatPropsType> = React.memo(({ userWorkChat, userId, user }) => {
     const dispatch = useDispatch()
     const scroll = useRef(null)
     useEffect(() => {
@@ -67,4 +67,4 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
             </div>
         </div>
     )
-}
+})

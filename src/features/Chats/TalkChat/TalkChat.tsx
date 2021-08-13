@@ -15,7 +15,7 @@ type TalkChattPropsType = {
     user: ProfileInfoType
 }
 
-export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, user }) => {
+export const TalkChat: React.FC<TalkChattPropsType> = React.memo(({ userTalkChat, userId, user }) => {
     const dispatch = useDispatch()
     const scroll = useRef(null)
     useEffect(() => {
@@ -69,4 +69,4 @@ export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, u
             </div>
         </div>
     )
-}
+})

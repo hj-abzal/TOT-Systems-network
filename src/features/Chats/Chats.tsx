@@ -13,7 +13,7 @@ type ChatsPropsType = {
     userTalkChat: MessageType[]
 }
 
-export const Chats: React.FC<ChatsPropsType> = ({ userWorkChat, userId, user, userTalkChat }) => {
+export const Chats: React.FC<ChatsPropsType> = React.memo(({ userWorkChat, userId, user, userTalkChat }) => {
     const [editMode, setEditMode] = useState(true)
 
 
@@ -41,4 +41,4 @@ export const Chats: React.FC<ChatsPropsType> = ({ userWorkChat, userId, user, us
 
         </div>
     )
-}
+})

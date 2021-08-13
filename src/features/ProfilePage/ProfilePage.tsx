@@ -14,7 +14,7 @@ type ProfilePagePropsType = {
     userNote: NotesType[]
     userId: number
 }
-export const ProfilePage: React.FC<ProfilePagePropsType> = ({ user, userNote, userId }) => {
+export const ProfilePage: React.FC<ProfilePagePropsType> = React.memo(({ user, userNote, userId }) => {
     const editMode = useSelector<AppStateType, boolean>(state => state.profile.editMode)
     const dispatch = useDispatch()
     const onClickHandler = () => dispatch(setEditModeProfile(true))
@@ -29,4 +29,4 @@ export const ProfilePage: React.FC<ProfilePagePropsType> = ({ user, userNote, us
             <UserNotes userNote={userNote} userId={userId} />
         </div>
     )
-}
+})
