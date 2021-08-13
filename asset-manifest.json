@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/TOT-Systems-network/static/css/main.56c2e573.chunk.css",
-    "main.js": "/TOT-Systems-network/static/js/main.f10df4ae.chunk.js",
-    "main.js.map": "/TOT-Systems-network/static/js/main.f10df4ae.chunk.js.map",
+    "main.js": "/TOT-Systems-network/static/js/main.a2ced91b.chunk.js",
+    "main.js.map": "/TOT-Systems-network/static/js/main.a2ced91b.chunk.js.map",
     "runtime-main.js": "/TOT-Systems-network/static/js/runtime-main.178426d5.js",
     "runtime-main.js.map": "/TOT-Systems-network/static/js/runtime-main.178426d5.js.map",
-    "static/js/2.15fce422.chunk.js": "/TOT-Systems-network/static/js/2.15fce422.chunk.js",
-    "static/js/2.15fce422.chunk.js.map": "/TOT-Systems-network/static/js/2.15fce422.chunk.js.map",
+    "static/js/2.e805912d.chunk.js": "/TOT-Systems-network/static/js/2.e805912d.chunk.js",
+    "static/js/2.e805912d.chunk.js.map": "/TOT-Systems-network/static/js/2.e805912d.chunk.js.map",
     "static/js/3.a8168c03.chunk.js": "/TOT-Systems-network/static/js/3.a8168c03.chunk.js",
     "static/js/3.a8168c03.chunk.js.map": "/TOT-Systems-network/static/js/3.a8168c03.chunk.js.map",
     "index.html": "/TOT-Systems-network/index.html",
     "static/css/main.56c2e573.chunk.css.map": "/TOT-Systems-network/static/css/main.56c2e573.chunk.css.map",
-    "static/js/2.15fce422.chunk.js.LICENSE.txt": "/TOT-Systems-network/static/js/2.15fce422.chunk.js.LICENSE.txt",
+    "static/js/2.e805912d.chunk.js.LICENSE.txt": "/TOT-Systems-network/static/js/2.e805912d.chunk.js.LICENSE.txt",
     "static/media/user.07073b35.png": "/TOT-Systems-network/static/media/user.07073b35.png"
   },
   "entrypoints": [
     "static/js/runtime-main.178426d5.js",
-    "static/js/2.15fce422.chunk.js",
+    "static/js/2.e805912d.chunk.js",
     "static/css/main.56c2e573.chunk.css",
-    "static/js/main.f10df4ae.chunk.js"
+    "static/js/main.a2ced91b.chunk.js"
   ]
 }
