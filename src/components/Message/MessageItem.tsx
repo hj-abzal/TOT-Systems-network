@@ -1,7 +1,12 @@
-import { Button } from '@material-ui/core';
-import React from 'react'
+import { IconButton } from '@material-ui/core';
+import React, { useState } from 'react'
 import s from './MessageItem.module.css'
 import userPng from '../../assets/user.png'
+import { Delete } from '@material-ui/icons';
+import Tippy from '@tippyjs/react';
+import { EditableSpan } from '../EditableSpan/EditableSpan';
+import { useDispatch } from 'react-redux';
+import { deleteMessageTalk, updateMessageTalk } from '../../features/Chats/TalkChat/talkChatReducer';
 
 type MessagePropsType = {
     message: string
@@ -9,6 +14,9 @@ type MessagePropsType = {
     time: string
     userPhoto: string
     me?: boolean
+    editAble?: boolean
+    userId: number
+    messageId: number
 }
 export const MessageItem: React.FC<MessagePropsType> = ({
     message,
@@ -16,20 +24,39 @@ export const MessageItem: React.FC<MessagePropsType> = ({
     time,
     userPhoto,
     me,
+    editAble,
+    userId,
+    messageId,
     ...restPprops
 }) => {
-    let now = new Date().toTimeString().slice(0, 5);
+    const dispatch = useDispatch()
+    const onDeleteNote = () => {
+        dispatch(deleteMessageTalk(userId, messageId))
+    }
+    const onChange = (text: string) => {
+        dispatch(updateMessageTalk(userId, messageId, text))
+    }
 
     return (
         <div>
             {
                 me
                     ? <div className={s.myMessage}>
-                        <div className={s.item}>
-                            <div className={s.name} ><b>{name}</b></div>
-                            <div className={s.text} >{message} </div>
-                            <div className={s.time} >{time}</div>
-                        </div>
+                        <Tippy interactive={true} placement={'left'} content={
+                            editAble && <IconButton onClick={onDeleteNote}>
+                                <Delete fontSize="small" />
+                            </IconButton>
+                        }>
+                            <div className={s.item}>
+                                <div className={s.name} ><b>{name}</b></div>
+                                {
+                                    editAble ? <EditableSpan value={message} onChange={onChange} />
+                                        : <div className={s.text} >{message} </div>
+                                }
+
+                                <div className={s.time} >{time}</div>
+                            </div>
+                        </Tippy>
                         <img className={s.avatar} src={userPhoto ? userPhoto : userPng} alt="avatar" />
                     </div>
                     : <div className={s.message}>

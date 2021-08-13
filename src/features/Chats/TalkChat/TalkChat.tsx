@@ -37,6 +37,8 @@ export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, u
                         name={m.name}
                         time={m.time}
                         userPhoto={m.url}
+                        userId={userId}
+                        messageId={m.id}
                     />
 
                 })}
@@ -48,6 +50,9 @@ export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, u
                         time={m.time}
                         userPhoto={user.imgUrl}
                         me={true}
+                        editAble={true}
+                        userId={userId}
+                        messageId={m.id}
                     />
 
                 })}

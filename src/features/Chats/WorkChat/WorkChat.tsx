@@ -38,6 +38,8 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
                         name={m.name}
                         time={m.time}
                         userPhoto={m.url}
+                        userId={userId}
+                        messageId={m.id}
                     />
 
                 })}
@@ -49,6 +51,8 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
                         time={m.time}
                         userPhoto={user.imgUrl}
                         me={true}
+                        userId={userId}
+                        messageId={m.id}
                     />
 
                 })}
