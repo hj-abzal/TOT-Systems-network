@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TOT-Systems-network/static/css/main.56c2e573.chunk.css",
-    "main.js": "/TOT-Systems-network/static/js/main.4414e0bc.chunk.js",
-    "main.js.map": "/TOT-Systems-network/static/js/main.4414e0bc.chunk.js.map",
+    "main.js": "/TOT-Systems-network/static/js/main.f10df4ae.chunk.js",
+    "main.js.map": "/TOT-Systems-network/static/js/main.f10df4ae.chunk.js.map",
     "runtime-main.js": "/TOT-Systems-network/static/js/runtime-main.178426d5.js",
     "runtime-main.js.map": "/TOT-Systems-network/static/js/runtime-main.178426d5.js.map",
     "static/js/2.15fce422.chunk.js": "/TOT-Systems-network/static/js/2.15fce422.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.178426d5.js",
     "static/js/2.15fce422.chunk.js",
     "static/css/main.56c2e573.chunk.css",
-    "static/js/main.4414e0bc.chunk.js"
+    "static/js/main.f10df4ae.chunk.js"
   ]
 }
