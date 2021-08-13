@@ -1,6 +1,3 @@
-import { AppStateType, store } from '../../../App/store'
-import { Dispatch } from 'redux'
-import { RegisteredUserType } from '../../authorization/Registration/registReducer'
 import { MessageType, WorkChatStateType } from '../WorkChat/workChatReducer'
 
 const initialState = {}
