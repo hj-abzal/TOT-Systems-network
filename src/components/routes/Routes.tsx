@@ -1,4 +1,3 @@
-import Container from "@material-ui/core/Container";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { PageType, pages } from "./Pages";

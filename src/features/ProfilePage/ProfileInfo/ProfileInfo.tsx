@@ -19,7 +19,7 @@ export const ProfileInfo: React.FC<ProfileInfoPropsType> = ({ profileInfo, setEd
     return (
         <div className={s.wrapper}>
             <div className={s.user}>
-                <img className={s.userPhoto} src={userImg} />
+                <img className={s.userPhoto} src={userImg} alt="" />
                 <Button
                     size="small"
                     variant="outlined"

@@ -1,6 +1,6 @@
 # Planktonics messanger - React & Redux
 
-### Planktonics messanger screens: Профиль, редактирования, заметки, чат.
+### Planktonics messanger screens: Профиль, заметки, чат.
 
 <img src="./src/assets/banner1.png" />
 

@@ -5,7 +5,6 @@ import {
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 import thunk from 'redux-thunk'
-
 import { loadState, saveState } from '../utils/localStorage'
 import { loginReducer } from '../features/authorization/Login/loginReducer'
 import { profilePageReducer } from '../features/ProfilePage/profilePageReducer'

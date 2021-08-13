@@ -1,6 +1,4 @@
-import IconButton from '@material-ui/core/IconButton';
-import { SendRounded } from '@material-ui/icons';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddItemForm } from '../../../components/AddItemForm/AddItemForm';

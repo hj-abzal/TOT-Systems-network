@@ -1,5 +1,5 @@
 import { IconButton } from '@material-ui/core';
-import React, { useState } from 'react'
+import React from 'react'
 import s from './MessageItem.module.css'
 import userPng from '../../assets/user.png'
 import { Delete } from '@material-ui/icons';
@@ -27,7 +27,6 @@ export const MessageItem: React.FC<MessagePropsType> = ({
     editAble,
     userId,
     messageId,
-    ...restPprops
 }) => {
     const dispatch = useDispatch()
     const onDeleteNote = () => {
@@ -69,7 +68,6 @@ export const MessageItem: React.FC<MessagePropsType> = ({
                         </div>
                     </div>
             }
-
         </div>
     )
 }

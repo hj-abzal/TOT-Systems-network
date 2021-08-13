@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { AppStateType } from '../../../App/store';
 import { addUser, RegisteredUserType } from './registReducer';
-import Grid from '@material-ui/core/Grid/Grid';
 import FormControl from '@material-ui/core/FormControl/FormControl';
 import FormGroup from '@material-ui/core/FormGroup/FormGroup';
 import Button from '@material-ui/core/Button/Button';
@@ -12,7 +11,7 @@ import TextField from '@material-ui/core/TextField/TextField';
 import s from './Registration.module.css'
 import { PATH } from '../../../components/routes/Pages';
 
-export const Registration = (props: any) => {
+export const Registration = () => {
     const registeredUsers = useSelector<AppStateType, RegisteredUserType[]>(state => state.registration.registeredUsers)
     const [editMode, setEditMode] = useState(false)
     const dispatch = useDispatch();

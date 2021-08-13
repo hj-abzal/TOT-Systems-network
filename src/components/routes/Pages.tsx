@@ -1,11 +1,8 @@
 import React, { ReactNode } from "react";
-import { Redirect } from "react-router-dom";
 import { Main } from "../../App/Main/Main";
 import { Login } from "../../features/authorization/Login/Login";
 import { Registration } from "../../features/authorization/Registration/Registration";
 import { EditProfileInfo } from "../../features/ProfilePage/EditProfileInfo/EditProfileInfo";
-import { ProfilePage } from "../../features/ProfilePage/ProfilePage";
-import { Chats } from "../../features/Chats/Chats";
 import { AuthRedirect } from "../Redirect/AuthRedirect";
 
 

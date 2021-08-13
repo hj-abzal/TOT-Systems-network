@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import s from './EditProfileInfo.module.css'
 import Button from '@material-ui/core/Button'
-import { RegisteredUserType } from '../../authorization/Registration/registReducer'
 import { AppStateType } from '../../../App/store'
 import { setEditModeProfile, updateUserProfile, UsersProfileType } from '../profilePageReducer'
 import { useFormik } from 'formik'
-import Grid from '@material-ui/core/Grid/Grid'
 import FormControl from '@material-ui/core/FormControl'
 import FormGroup from '@material-ui/core/FormGroup'
 import TextField from '@material-ui/core/TextField'
@@ -88,7 +86,7 @@ export const EditProfileInfo: React.FC<EditProfileInfoPropsType> = () => {
         return (
             <div className={s.wrapper}>
                 <div className={s.userPhotoBlock}>
-                    <img className={s.userPhoto} src={userImg} />
+                    <img className={s.userPhoto} src={userImg} alt="" />
                     <input
                         type="file"
                         accept="image/*"

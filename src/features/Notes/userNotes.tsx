@@ -1,5 +1,3 @@
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { AddItemForm } from '../../components/AddItemForm/AddItemForm';

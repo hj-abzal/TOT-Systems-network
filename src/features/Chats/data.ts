@@ -1,14 +1,3 @@
-import { AppStateType, store } from '../../App/store'
-
-// const whoIsUser = (state: AppStateType) => {
-//     let id = state.login.loggedId
-//     let user = state.registration.registeredUsers[id]
-//     return user
-//   }
-//   let user =
-//     whoIsUser(store.getState()).firstName +
-//     ' ' +
-//     whoIsUser(store.getState()).lastName
 export const workChatData = [
   {
     id: 0,
@@ -137,7 +126,7 @@ export const workChatData = [
     url: 'https://avatars.dicebear.com/v2/gridy/b1eba6cf7f3f505f82d798f760f352b1.svg',
   },
   {
-    id: 17,
+    id: 18,
     text: 'Таск №45769 дизайн для нового продукта сделано.',
     time: '15:35',
     name: 'Ульяна Ткачева',
@@ -186,7 +175,7 @@ export const workChatData = [
     url: 'https://avatars.dicebear.com/v2/avataaars/5343a8b5c2dd753b8fee960c6dcd9ad8.svg',
   },
   {
-    id: 15,
+    id: 25,
     text: 'Сегодня к нам присоединяется новый член команды. Добро пожаловать!',
     time: '17:05',
     name: 'Василий Иванович',

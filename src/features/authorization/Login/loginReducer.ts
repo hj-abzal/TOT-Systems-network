@@ -1,6 +1,5 @@
 import { GetAppStateType } from './../../../App/store'
 import { Dispatch } from 'redux'
-import { act } from 'react-dom/test-utils'
 
 const initialState = {
   isLoggedIn: false,

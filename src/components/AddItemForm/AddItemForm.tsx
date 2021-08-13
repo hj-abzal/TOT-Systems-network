@@ -1,7 +1,6 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { IconButton, TextField } from '@material-ui/core';
 import { AddBox, SendRounded } from '@material-ui/icons';
-import Tippy from '@tippyjs/react';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void

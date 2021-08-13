@@ -1,4 +1,4 @@
-import { AppStateType } from './../App/store';
+import { AppStateType } from './../App/store'
 
 export const loadState = () => {
   try {

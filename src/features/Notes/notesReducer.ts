@@ -1,6 +1,3 @@
-import { Dispatch } from 'redux'
-import { RegisteredUserType } from '../authorization/Registration/registReducer'
-
 const initialState = {}
 
 export const notesReducer = (
@@ -122,7 +119,6 @@ export const changeNoteColor = (
   } as const
 }
 // types
-type InitialStateType = typeof initialState
 
 export type NotesReducerActionTypes =
   | ReturnType<typeof addUserNote>

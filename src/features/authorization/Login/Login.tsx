@@ -6,7 +6,7 @@ import { AppStateType } from '../../../App/store';
 import { LogIn } from './loginReducer';
 import { PATH } from '../../../components/routes/Pages';
 import s from './Login.module.css'
-import { Grid, Button } from '@material-ui/core';
+import {  Button } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl/FormControl';
 import FormLabel from '@material-ui/core/FormLabel/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup/FormGroup';

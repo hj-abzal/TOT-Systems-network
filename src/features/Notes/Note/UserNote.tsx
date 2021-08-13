@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { EditableSpan } from '../../../components/EditableSpan/EditableSpan';
 import { changeNoteColor, deleteNote, updateUserNote } from '../notesReducer';
 import s from './UserNote.module.css'
@@ -64,6 +64,3 @@ export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, t
     )
 }
 
-// <BlockPicker color={selectedColor}
-// onChangeComplete={color => setSelectedColor(color.hex)
-//     />
