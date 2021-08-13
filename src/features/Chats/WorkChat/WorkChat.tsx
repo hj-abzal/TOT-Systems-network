@@ -30,7 +30,6 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
     return (
         <div className={s.wrapper}>
             <div className={s.content}>
-                chat
                 {workChatData.map(m => {
                     return <MessageItem
                         key={m.id}

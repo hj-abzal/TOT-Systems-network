@@ -3,7 +3,7 @@ import { Delete } from '@material-ui/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { EditableSpan } from '../../../components/EditableSpan/EditableSpan';
-import { deleteNote, updateUserNote } from '../notesReducer';
+import { changeNoteColor, deleteNote, updateUserNote } from '../notesReducer';
 import s from './UserNote.module.css'
 import PaletteIcon from '@material-ui/icons/Palette';
 import Tippy from '@tippyjs/react';
@@ -14,13 +14,17 @@ type UserNotePropsType = {
     noteId: number
     title: string
     text: string
+    color: string
 }
 
-export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, text }) => {
-    const [selectedColor, setSelectedColor] = useState("#b5c3fa")
+export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, text, color }) => {
+    const [selectedColor, setSelectedColor] = useState(color)
     const [visible, setVisible] = useState(false);
     const show = () => setVisible(true);
-    const hide = () => setVisible(false);
+    const hide = () => {
+        dispatch(changeNoteColor(userId, noteId, selectedColor))
+        setVisible(false)
+    }
     const dispatch = useDispatch()
     const onUpdateNoteTitle = (udatedTitle: string) => {
         dispatch(updateUserNote(userId, noteId, udatedTitle, text))
@@ -31,6 +35,7 @@ export const UserNote: React.FC<UserNotePropsType> = ({ userId, noteId, title, t
     const onDeleteNote = () => {
         dispatch(deleteNote(userId, noteId))
     }
+
     return (
         <div>
             <div className={s.container}>

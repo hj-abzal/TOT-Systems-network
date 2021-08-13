@@ -29,7 +29,6 @@ export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, u
     return (
         <div className={s.wrapper}>
             <div className={s.content}>
-                chat
                 {workChatData.map(m => {
                     return <MessageItem
                         key={m.id}
@@ -66,7 +65,6 @@ export const TalkChat: React.FC<TalkChattPropsType> = ({ userTalkChat, userId, u
                     multiline={true}
                     className={s.divWrapper}
                     inputStyle={s.messageInput}
-                    emoji={true}
                 />
             </div>
         </div>

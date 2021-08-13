@@ -32,6 +32,7 @@ export const UserNotes: React.FC<UserNotesPropsType> = ({ userNote, userId }) =>
                             noteId={n.id}
                             title={n.title}
                             text={n.text}
+                            color={n.color}
                         />
                     })
                 }

@@ -21,10 +21,10 @@ export const Chats: React.FC<ChatsPropsType> = ({ userWorkChat, userId, user, us
         <div className={s.wrapper}>
             <div className={s.header}>
                 <div className={s.chatBtn} onClick={() => setEditMode(true)}>
-                    {editMode ? <b className={s.choosedBtn}>  Work Chat </b> : " Work Chat "}
+                    {editMode ? <b className={s.choosedBtn}>  Рабочий чат </b> : "Рабочий чат"}
                 </div>
                 <div className={s.chatBtn} onClick={() => setEditMode(false)}>
-                    {!editMode ? <b className={s.choosedBtn}>  TalkChat</b> : "TalkChat"}
+                    {!editMode ? <b className={s.choosedBtn}>  Общение </b> : "Общение"}
                 </div>
             </div>
             {

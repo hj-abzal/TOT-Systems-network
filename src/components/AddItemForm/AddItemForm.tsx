@@ -1,12 +1,13 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { IconButton, TextField } from '@material-ui/core';
 import { AddBox, SendRounded } from '@material-ui/icons';
+import Picker from 'emoji-picker-react';
+import Tippy from '@tippyjs/react';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
     disabled?: boolean
     multiline?: boolean
-    emoji?: boolean
     className?: string
     inputStyle?: string
 
@@ -14,12 +15,12 @@ type AddItemFormPropsType = {
 
 export const AddItemForm = React.memo(function (
     {
-        addItem, disabled = false, multiline, emoji, className, inputStyle
+        addItem, disabled = false, multiline, className, inputStyle
     }: AddItemFormPropsType) {
 
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
-
+    
     const addItemHandler = () => {
         let trimmed = title.trim()
         if (trimmed.length < 50) {
@@ -30,7 +31,7 @@ export const AddItemForm = React.memo(function (
                 setError("введите текст");
             }
         } else {
-            setError("превышает максимальное значение");
+            setError("превышает максимальное значение 50");
         }
     }
 
@@ -50,11 +51,7 @@ export const AddItemForm = React.memo(function (
     return <div>
         {
             multiline ? <div className={className}>
-                {
-                    emoji && <IconButton>
-                        <SendRounded />
-                    </IconButton>
-                }
+                
                 <TextField
                     className={inputStyle}
                     variant="filled"
