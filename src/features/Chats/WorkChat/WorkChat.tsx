@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { AddItemForm } from '../../../components/AddItemForm/AddItemForm';
 import { MessageItem } from '../../../components/Message/MessageItem';
 import { ProfileInfoType } from '../../ProfilePage/profilePageReducer';
+import { workChatData } from '../data';
 import s from './WorkChat.module.css'
 import { MessageType, sendMessage } from './workChatReducer';
 
@@ -30,6 +31,16 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
         <div className={s.wrapper}>
             <div className={s.content}>
                 chat
+                {workChatData.map(m => {
+                    return <MessageItem
+                        key={m.id}
+                        message={m.text}
+                        name={m.name}
+                        time={m.time}
+                        userPhoto={m.url}
+                    />
+
+                })}
                 {userWorkChat?.map(m => {
                     return <MessageItem
                         key={m.id}
@@ -46,11 +57,11 @@ export const WorkChat: React.FC<WorkChatPropsType> = ({ userWorkChat, userId, us
             </div>
             <div className={s.footer}>
 
-                <AddItemForm 
-                addItem={onClickHandler} 
-                multiline={true} 
-                className={s.divWrapper} 
-                inputStyle={s.messageInput}
+                <AddItemForm
+                    addItem={onClickHandler}
+                    multiline={true}
+                    className={s.divWrapper}
+                    inputStyle={s.messageInput}
                 />
             </div>
         </div>
