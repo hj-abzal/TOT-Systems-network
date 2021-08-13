@@ -2,11 +2,11 @@
 
 ### Planktonics messanger screens: Профиль, редактирования, заметки, чат.
 
-![Main]("./src/assets/banner1.png")
+<img src="./src/assets/banner1.png" />
 
 ### Planktonics messanger screens: Логинизация, регистрация, режим редактирования.
 
-![Login]("./src/assets/banner2.png")
+<img src="./src/assets/banner2.png" />
 
 ## Ипользованные технологии:
 
